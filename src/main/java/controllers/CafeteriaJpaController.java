@@ -206,7 +206,7 @@ public class CafeteriaJpaController implements Serializable {
     public static Cafeteria buscCafetNombre(String nombre) {
         Cafeteria cafetBuscada = new Cafeteria();
         // METER EL COSO ESE
-
+  
         return cafetBuscada;
     }
 
