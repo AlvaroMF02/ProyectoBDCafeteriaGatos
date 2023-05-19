@@ -145,20 +145,20 @@ public class EncargadoJpaController implements Serializable {
 
     // METODOS DE BUSQUEDA POR COSTE DE PEDIDO POR LAS NAMED QUERY
     // Encargado.findByNombre
-    public static Encargado buscEncarNombre(String nombre) {
-        Encargado encargBusca = new Encargado();
-        // METER EL COSO ESE
-
-        return encargBusca;
-    }
-
-    // Encargado.findByEdad
-    public static Encargado buscEncarEdad(int edad) {
-        Encargado encargBusca = new Encargado();
-        // METER EL COSO ESE
-
-        return encargBusca;
-    }
+//    public static Encargado buscEncarNombre(String nombre) {
+//        Encargado encargBusca = new Encargado();
+//        // METER EL COSO ESE
+//
+//        return encargBusca;
+//    }
+//
+//    // Encargado.findByEdad
+//    public static Encargado buscEncarEdad(int edad) {
+//        Encargado encargBusca = new Encargado();
+//        // METER EL COSO ESE
+//
+//        return encargBusca;
+//    }
 
     public List<Encargado> findEncargadoEntities() {
         return findEncargadoEntities(true, -1, -1);

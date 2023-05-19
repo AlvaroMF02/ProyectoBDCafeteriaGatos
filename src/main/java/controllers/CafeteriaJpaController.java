@@ -208,21 +208,28 @@ public class CafeteriaJpaController implements Serializable {
 
     // METODOS DE BUSQUEDA POR NOMBRE POR LAS NAMED QUERY
     // Cafeteria.findByNombre
-    public static Cafeteria buscCafetNombre(String nombre) {
-        Cafeteria cafetBuscada = new Cafeteria();
-        // METER EL COSO ESE
-
-        return cafetBuscada;
-    }
+//    public static Cafeteria buscCafetNombre(String nombre) {
+//        Cafeteria cafetBuscada = new Cafeteria();
+//        // METER EL COSO ESE
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("proyectoBDAlvaro");
+//        EntityManager em = emf.createEntityManager();
+//        Query q = em.createNamedQuery("Cafeteria.findByNombre");
+//        q.setParameter(1, nombre);
+//        List a = q.getResultList();
+//        
+//        a.forEach(System.out::println);
+//        
+//        return cafetBuscada;
+//    }
 
     // METODOS DE BUSQUEDA POR COSTE DE PEDIDO POR LAS NAMED QUERY
     // Cafeteria.findByCostePedidoMensu
-    public static Cafeteria buscCafetCostePedidos(String nombre) {
-        Cafeteria cafetBuscada = new Cafeteria();
-        // METER EL COSO ESE
-
-        return cafetBuscada;
-    }
+//    public static Cafeteria buscCafetCostePedidos(String nombre) {
+//        Cafeteria cafetBuscada = new Cafeteria();
+//        // METER EL COSO ESE
+//
+//        return cafetBuscada;
+//    }
 
     public List<Cafeteria> findCafeteriaEntities() {
         return findCafeteriaEntities(true, -1, -1);
