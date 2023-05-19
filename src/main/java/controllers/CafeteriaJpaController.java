@@ -200,20 +200,24 @@ public class CafeteriaJpaController implements Serializable {
             }
         }
     }
-    
+
     // METODOS DE BUSQUEDA POR NOMBRE POR LAS NAMED QUERY
     // Cafeteria.findByNombre
-    public static Cafeteria buscCafetNombre(String nombre){
+    public static Cafeteria buscCafetNombre(String nombre) {
         Cafeteria cafetBuscada = new Cafeteria();
-        
-        
+        // METER EL COSO ESE
+
         return cafetBuscada;
     }
-    
+
     // METODOS DE BUSQUEDA POR COSTE DE PEDIDO POR LAS NAMED QUERY
     // Cafeteria.findByCostePedidoMensu
+    public static Cafeteria buscCafetCostePedidos(String nombre) {
+        Cafeteria cafetBuscada = new Cafeteria();
+        // METER EL COSO ESE
 
-    
+        return cafetBuscada;
+    }
 
     public List<Cafeteria> findCafeteriaEntities() {
         return findCafeteriaEntities(true, -1, -1);
@@ -260,5 +264,5 @@ public class CafeteriaJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }
