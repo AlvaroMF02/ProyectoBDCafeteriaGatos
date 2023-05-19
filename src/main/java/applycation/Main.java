@@ -8,7 +8,6 @@ import entities.Encargado;
 import entities.Gato;
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -64,7 +63,7 @@ public class Main {
 
         // CREAR UNA ENTIDAD GATO
         System.out.println("\n#### AÑADIR UN GATO NUEVO ####");
-        Gato crearGato = new Gato(0, "Kim", "Persa", 4, cafeteriaNueva);
+        Gato crearGato = new Gato(8, "Michito", "Naranja", 6, cafeteriaNueva);
         // controlador.crearGato(crearGato);
         gatos.forEach(System.out::println);
 
@@ -74,13 +73,13 @@ public class Main {
         List<Gato> listaGatosVacia = new ArrayList<>();
         Cafeteria cafeteriaEditada = new Cafeteria(3, "Michiss", fecha,
                 BigDecimal.valueOf(289.50), crearEncargado, listaGatosVacia);
-        //controlador.editarCafeteria(cafeteriaEditada);
+        // controlador.editarCafeteria(cafeteriaEditada);
         cafeterias.forEach(System.out::println);
 
         // MODIFICAR UNA ENTIDAD GATO
         System.out.println("\n#### MODIFICACIÓN DE UN GATO (4, CAMBIO DE EDAD) ####");
-        Gato gatoEditado = new Gato(4, "Kim", "Persa", 2, cafeteriaNueva);
-        //controlador.editarGato(gatoEditado);
+        Gato gatoEditado = new Gato(5, "Kim", "Persa", 2, cafeteriaNueva);
+        // controlador.editarGato(gatoEditado);
         gatos.forEach(System.out::println);
 
         // MODIFICAR UNA ENTIDAD ENCARGADO
@@ -109,7 +108,7 @@ public class Main {
 
         // ELIMINAR CAFETERIA (RELACIONADA CON ENCARGADO Y DATO)
         System.out.println("\n#### BORRADO DE UNA CAFETERIA (1) ####");
-        controlador.eliminarCafeteria(1);
+        //controlador.eliminarCafeteria(1);
         
         
     }
