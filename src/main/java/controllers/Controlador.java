@@ -35,6 +35,12 @@ public class Controlador {
         contEncargado = new EncargadoJpaController();
         contEncargado.edit(encargado);
     }
+    
+    // ELIMINAR UN ENCARGADO
+    public void eliminarEncargado(Integer id) throws IllegalOrphanException, NonexistentEntityException{
+        contEncargado = new EncargadoJpaController();
+        contEncargado.destroy(id);
+    }
 
     // # # #  # # # # # # # # METODOS GATOS # # # # # # # # # # # //
     // OBTENER A TODOS LOS GATOS
@@ -54,6 +60,12 @@ public class Controlador {
         contGato = new GatoJpaController();
         contGato.edit(gato);
     }
+    
+     // ELIMINAR UN GATO
+    public void eliminarGato(Integer id) throws IllegalOrphanException, NonexistentEntityException{
+        contGato = new GatoJpaController();
+        contGato.destroy(id);
+    }
 
     // # # # # # # # # # # METODOS CAFETERIAS # # # # # # # # # # //
     // OBTENER TODAS LAS CAFETERIAS
@@ -72,6 +84,12 @@ public class Controlador {
     public void editarCafeteria(Cafeteria cafeteria) throws NonexistentEntityException, Exception {
         contCafeteria = new CafeteriaJpaController();
         contCafeteria.edit(cafeteria);
+    }
+    
+    // ELIMINAR UNA CAFETERIA
+    public void eliminarCafeteria(Integer id) throws IllegalOrphanException, NonexistentEntityException{
+        contCafeteria = new CafeteriaJpaController();
+        contCafeteria.destroy(id);
     }
 
 }
