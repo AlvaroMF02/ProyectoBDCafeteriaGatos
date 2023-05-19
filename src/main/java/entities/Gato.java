@@ -55,11 +55,12 @@ public class Gato implements Serializable {
         this.id = id;
     }
 
-    public Gato(Integer id, String nombre, String raza, int edad) {
+    public Gato(Integer id, String nombre, String raza, int edad, Cafeteria idCafeteria) {
         this.id = id;
         this.nombre = nombre;
         this.raza = raza;
         this.edad = edad;
+        this.idCafeteria = idCafeteria;
     }
 
     public Integer getId() {
