@@ -2,6 +2,8 @@ package entities;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -50,12 +52,12 @@ public class Cafeteria implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @Column(name = "costePedidoMensu")
-    
+
     // RELACION CAFETERIA UNO A MUCHOS GATO
     private BigDecimal costePedidoMensu;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCafeteria")
     private List<Gato> gatoList;
-    
+
     // RELACION CAFETERIA UNO A UNO ENCARGADO
     @JoinColumn(name = "idEncargado", referencedColumnName = "id")
     @OneToOne(optional = false)
@@ -93,6 +95,13 @@ public class Cafeteria implements Serializable {
 
     public Date getFecApert() {
         return fecApert;
+    }
+
+    public LocalDate getFecApertLocalDate() {
+        return new Date(this.fecApert.getTime()).
+                toInstant().
+                atZone(ZoneId.systemDefault()).
+                toLocalDate();
     }
 
     public void setFecApert(Date fecApert) {
@@ -146,8 +155,7 @@ public class Cafeteria implements Serializable {
     // TO STRING SIN CONCATENADAS
     @Override
     public String toString() {
-        return "Cafeteria[" + "id: " + id + ", Nombre: " + nombre + ", Apertura: " + fecApert + ", Pedidos Mensuales: " + costePedidoMensu + ']';
+        return "Cafeteria[" + "id: " + id + "| Nombre: " + nombre + "| Apertura: " + getFecApertLocalDate() + "| Pedidos Mensuales: " + costePedidoMensu + ']';
     }
 
-    
 }

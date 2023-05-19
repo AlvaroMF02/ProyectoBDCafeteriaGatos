@@ -120,23 +120,6 @@ public class GatoJpaController implements Serializable {
         }
     }
 
-    // METODOS DE BUSQUEDA POR COSTE DE PEDIDO POR LAS NAMED QUERY
-    // Gato.findByRaza
-//    public static Gato buscGatoRaza(String nombre) {
-//        Gato gatoBusc = new Gato();
-//        // METER EL COSO ESE
-//
-//        return gatoBusc;
-//    }
-//
-//    // Gato.findByNombre
-//    public static Gato buscGatoEdad(int edad) {
-//        Gato gatoBusc = new Gato();
-//        // METER EL COSO ESE
-//
-//        return gatoBusc;
-//    }
-
     public List<Gato> findGatoEntities() {
         return findGatoEntities(true, -1, -1);
     }
