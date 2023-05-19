@@ -70,12 +70,13 @@ public class Cafeteria implements Serializable {
         this.id = id;
     }
 
-    public Cafeteria(Integer id, String nombre, Date fecApert, BigDecimal costePedidoMensu, Encargado idEncargado) {
+    public Cafeteria(Integer id, String nombre, Date fecApert, BigDecimal costePedidoMensu, Encargado idEncargado,List<Gato> gatoList) {
         this.id = id;
         this.nombre = nombre;
         this.fecApert = fecApert;
         this.costePedidoMensu = costePedidoMensu;
         this.idEncargado = idEncargado;
+        this.gatoList = gatoList;
     }
 
     public Integer getId() {

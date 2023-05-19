@@ -7,6 +7,8 @@ import entities.Encargado;
 import entities.Gato;
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,11 +19,11 @@ import java.util.List;
 public class Main {
     
     /*
-    Prueba a modificar una entidad de cada tipo
+    ----Prueba a modificar una entidad de cada tipo
     Prueba a borrar una entidad de cada tipo
     */
     
-    public static void main(String[] args) throws IllegalOrphanException {
+    public static void main(String[] args) throws IllegalOrphanException, Exception {
         // CONTROLADOR CON TODOS LOS METODOS DE JPA NECESARIOS
         Controlador controlador = new Controlador();
         Date fecha = Date.from(Instant.now());
@@ -50,7 +52,7 @@ public class Main {
         
         // CREAR UNA ENTIDAD CAFETERIA
         System.out.println("\n#### LISTA DE CAFETERIA AL AÑADIR UNO NUEVO ####");
-        Cafeteria cafeteriaNueva = new Cafeteria(0, "Gaturro", fecha, BigDecimal.valueOf(987.50), crearEncargado);
+        Cafeteria cafeteriaNueva = new Cafeteria(4, "Gaturro", fecha, BigDecimal.valueOf(987.50), crearEncargado,gatos);
         // controlador.crearCafeteria(cafeteriaNueva);
         cafeterias.forEach(System.out::println);
         
@@ -60,7 +62,24 @@ public class Main {
         // controlador.crearGato(crearGato);
         gatos.forEach(System.out::println);
         
+        // MODIFICAR UNA ENTIDAD CAFETERIA
+        System.out.println("\n#### MODIFICACIÓN DE UNA CAFETERIA (3, CAMBIO DE COSTES) ####");
+        List<Gato> listaGatosVacia = new ArrayList<>();
+        Cafeteria cafeteriaEditada = new Cafeteria(3, "Michiss", fecha, BigDecimal.valueOf(289.50), crearEncargado,listaGatosVacia);
+        //controlador.editarCafeteria(cafeteriaEditada);
+        cafeterias.forEach(System.out::println);
         
+        // MODIFICAR UNA ENTIDAD GATO
+        System.out.println("\n#### MODIFICACIÓN DE UN GATO (4, CAMBIO DE EDAD) ####");
+        Gato gatoEditado = new Gato(4, "Kim", "Persa", 2,cafeteriaNueva);
+        //controlador.editarGato(gatoEditado);
+        gatos.forEach(System.out::println);
+        
+        // MODIFICAR UNA ENTIDAD ENCARGADO
+        System.out.println("\n#### MODIFICACIÓN DE UN ENCARGADO (5, CAMBIO DE NOMBRE, APELLIDO Y EDAD) ####");
+        Encargado encargadoEditado = new Encargado(5, "Juán", "Palomar", 24);
+        // controlador.editarEncargado(encargadoEditado);
+        encargados.forEach(System.out::println);
         
     }
 }

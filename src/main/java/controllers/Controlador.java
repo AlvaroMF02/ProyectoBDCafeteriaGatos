@@ -1,6 +1,7 @@
 package controllers;
 
 import controllers.exceptions.IllegalOrphanException;
+import controllers.exceptions.NonexistentEntityException;
 import entities.Cafeteria;
 import entities.Encargado;
 import entities.Gato;
@@ -29,7 +30,13 @@ public class Controlador {
         contEncargado.create(encargado);
     }
 
-    // # # # # # # # # # # METODOS GATOS # # # # # # # # # # //
+    // MODIFICAR ENCARGADO
+    public void editarEncargado(Encargado encargado) throws NonexistentEntityException, Exception {
+        contEncargado = new EncargadoJpaController();
+        contEncargado.edit(encargado);
+    }
+
+    // # # #  # # # # # # # # METODOS GATOS # # # # # # # # # # # //
     // OBTENER A TODOS LOS GATOS
     public List<Gato> obtenerGatos() {
         contGato = new GatoJpaController();
@@ -40,6 +47,12 @@ public class Controlador {
     public void crearGato(Gato gato) {
         contGato = new GatoJpaController();
         contGato.create(gato);
+    }
+    
+    // MODIFICAR GATOS
+    public void editarGato(Gato gato) throws NonexistentEntityException, Exception {
+        contGato = new GatoJpaController();
+        contGato.edit(gato);
     }
 
     // # # # # # # # # # # METODOS CAFETERIAS # # # # # # # # # # //
@@ -53,6 +66,12 @@ public class Controlador {
     public void crearCafeteria(Cafeteria cafeteria) throws IllegalOrphanException {
         contCafeteria = new CafeteriaJpaController();
         contCafeteria.create(cafeteria);
+    }
+    
+    // MODIFICAR CAFETERIA
+    public void editarCafeteria(Cafeteria cafeteria) throws NonexistentEntityException, Exception {
+        contCafeteria = new CafeteriaJpaController();
+        contCafeteria.edit(cafeteria);
     }
 
 }
