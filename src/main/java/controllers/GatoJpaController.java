@@ -11,6 +11,7 @@ import entities.Gato;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -21,6 +22,11 @@ public class GatoJpaController implements Serializable {
     public GatoJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
+
+    public GatoJpaController() {
+        emf = Persistence.createEntityManagerFactory("proyectoBDAlvaro");
+    }
+
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {

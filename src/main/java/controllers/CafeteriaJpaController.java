@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -23,6 +24,10 @@ public class CafeteriaJpaController implements Serializable {
 
     public CafeteriaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
+    }
+
+    public CafeteriaJpaController() {
+        emf = Persistence.createEntityManagerFactory("proyectoBDAlvaro");
     }
     private EntityManagerFactory emf = null;
 
@@ -206,7 +211,7 @@ public class CafeteriaJpaController implements Serializable {
     public static Cafeteria buscCafetNombre(String nombre) {
         Cafeteria cafetBuscada = new Cafeteria();
         // METER EL COSO ESE
-  
+
         return cafetBuscada;
     }
 
