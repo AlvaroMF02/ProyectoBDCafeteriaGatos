@@ -35,6 +35,7 @@ public class Main {
         // CONTROLADOR CON TODOS LOS METODOS DE JPA NECESARIOS
         Controlador controlador = new Controlador();
         Date fecha = Date.from(Instant.now());
+        List<Gato> listaGatosVacia = new ArrayList<>();
 
         // METODO DE CONSULTA DE ENCARGADO
         List<Encargado> encargados = controlador.obtenerEncargados();
@@ -54,33 +55,29 @@ public class Main {
         /*
         // CREAR UNA ENTIDAD ENCARGADO
         System.out.println("\n\n\n#### AÑADIR UN ENCARGADO NUEVO ####");
-        Encargado crearEncargado = new Encargado(8, "Álvaro", "Martínez", 20);
-        // controlador.crearEncargado(crearEncargado);
+        Encargado crearEncargado = new Encargado(4, "Álvaro", "Martínez", 20);
+        //controlador.crearEncargado(crearEncargado);
         encargados.forEach(System.out::println);
 
         // CREAR UNA ENTIDAD CAFETERIA
         System.out.println("\n#### AÑADIR UNA CAFETERÍA NUEVA ####");
-        // gatos que estarán en la cafeteria nueva (nino)
-        List<Gato>gatosCafetNueva = new ArrayList<>();
-        gatosCafetNueva.add(gatos.get(0));
-        Cafeteria cafeteriaNueva = new Cafeteria(6, "Gaturro", fecha,
-                BigDecimal.valueOf(987.50), crearEncargado, gatosCafetNueva);
+        Cafeteria cafeteriaNueva = new Cafeteria(4, "Gaturro", fecha,
+                BigDecimal.valueOf(987.50), crearEncargado, listaGatosVacia);
         // controlador.crearCafeteria(cafeteriaNueva);
         cafeterias.forEach(System.out::println);
 
         // CREAR UNA ENTIDAD GATO
         System.out.println("\n#### AÑADIR UN GATO NUEVO ####");
-        Gato crearGato = new Gato(6, "Michito", "Naranja", 6, cafeteriaNueva);
+        Gato crearGato = new Gato(4, "Michito", "Naranja", 6, cafeteriaNueva);
         // controlador.crearGato(crearGato);
         gatos.forEach(System.out::println);
 
         // AL EDITAR HAY QUE TENER MUCHO CUIDADO EN LOS ID DE CAFETERIA Y GATO
         // MODIFICAR UNA ENTIDAD CAFETERIA
-        System.out.println("\n\n\n#### MODIFICACIÓN DE UNA CAFETERIA (3, CAMBIO DE NOMBRE, COSTES Y ENCARGADO) ####");
-        List<Gato> listaGatosVacia = new ArrayList<>();
-        Cafeteria cafeteriaEditada = new Cafeteria(3, "Michiss", fecha,
+        System.out.println("\n\n\n#### MODIFICACIÓN DE UNA CAFETERIA (4, CAMBIO DE NOMBRE Y COSTES) ####");
+        Cafeteria cafeteriaEditada = new Cafeteria(4, "Michiss", fecha,
                 BigDecimal.valueOf(289.50), crearEncargado, listaGatosVacia);
-        // controlador.editarCafeteria(cafeteriaEditada);
+        controlador.editarCafeteria(cafeteriaEditada);
         cafeterias.forEach(System.out::println);
 
         // MODIFICAR UNA ENTIDAD GATO
