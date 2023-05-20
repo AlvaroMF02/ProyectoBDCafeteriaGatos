@@ -51,7 +51,7 @@ public class Main {
         System.out.println("\n#### LISTA DE CAFETERÍAS ####");
         cafeterias.forEach(System.out::println);
 
-        
+        /*
         // CREAR UNA ENTIDAD ENCARGADO
         System.out.println("\n\n\n#### AÑADIR UN ENCARGADO NUEVO ####");
         Encargado crearEncargado = new Encargado(8, "Álvaro", "Martínez", 20);
@@ -94,7 +94,7 @@ public class Main {
         Encargado encargadoEditado = new Encargado(8, "Álvaro", "Martínez Flores", 24);
         controlador.editarEncargado(encargadoEditado);
         encargados.forEach(System.out::println);
-/*
+
         // ELIMINAR ENCARGADO (NO TIENEN RELACIÓN)                              CAMBIAR DATOS PARA QUE ACEPTE NULOS
         System.out.println("\n\n\n#### BORRADO DE UN ENCARGADO (6) ####");
         try {
