@@ -64,8 +64,8 @@ public class PrincCafeterias extends javax.swing.JFrame {
         EliminarCafeteria = new javax.swing.JButton();
         EditarCafeteria = new javax.swing.JButton();
         InsertarCafeteria = new javax.swing.JButton();
-        botonBuscador = new javax.swing.JButton();
-        textoBusqCodi = new javax.swing.JTextField();
+        BuscadorCafeteria = new javax.swing.JButton();
+        buscCafeteria = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         Volver = new javax.swing.JButton();
 
@@ -78,6 +78,7 @@ public class PrincCafeterias extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(160, 126, 120));
         jLabel2.setText("CAFETERÍAS");
 
+        jPanel2.setBackground(new java.awt.Color(160, 126, 120));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         tablaCafeterias.setModel(new javax.swing.table.DefaultTableModel(
@@ -99,7 +100,7 @@ public class PrincCafeterias extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -110,47 +111,64 @@ public class PrincCafeterias extends javax.swing.JFrame {
                 .addGap(187, 187, 187))
         );
 
+        Actualizar.setBackground(new java.awt.Color(160, 126, 120));
+        Actualizar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Actualizar.setForeground(new java.awt.Color(41, 30, 28));
         Actualizar.setText("Actualizar");
+        Actualizar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ActualizarActionPerformed(evt);
             }
         });
 
-        EliminarCafeteria.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        EliminarCafeteria.setBackground(new java.awt.Color(160, 126, 120));
+        EliminarCafeteria.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        EliminarCafeteria.setForeground(new java.awt.Color(41, 30, 28));
         EliminarCafeteria.setText("Eliminar");
+        EliminarCafeteria.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         EliminarCafeteria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EliminarCafeteriaActionPerformed(evt);
             }
         });
 
-        EditarCafeteria.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        EditarCafeteria.setBackground(new java.awt.Color(160, 126, 120));
+        EditarCafeteria.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        EditarCafeteria.setForeground(new java.awt.Color(41, 30, 28));
         EditarCafeteria.setText("Editar");
+        EditarCafeteria.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         EditarCafeteria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EditarCafeteriaActionPerformed(evt);
             }
         });
 
-        InsertarCafeteria.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        InsertarCafeteria.setBackground(new java.awt.Color(160, 126, 120));
+        InsertarCafeteria.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        InsertarCafeteria.setForeground(new java.awt.Color(41, 30, 28));
         InsertarCafeteria.setText("Añadir");
+        InsertarCafeteria.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         InsertarCafeteria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InsertarCafeteriaActionPerformed(evt);
             }
         });
 
-        botonBuscador.setText("Buscar");
-        botonBuscador.addActionListener(new java.awt.event.ActionListener() {
+        BuscadorCafeteria.setBackground(new java.awt.Color(160, 126, 120));
+        BuscadorCafeteria.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        BuscadorCafeteria.setForeground(new java.awt.Color(41, 30, 28));
+        BuscadorCafeteria.setText("Buscar");
+        BuscadorCafeteria.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        BuscadorCafeteria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonBuscadorActionPerformed(evt);
+                BuscadorCafeteriaActionPerformed(evt);
             }
         });
 
-        textoBusqCodi.addActionListener(new java.awt.event.ActionListener() {
+        buscCafeteria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoBusqCodiActionPerformed(evt);
+                buscCafeteriaActionPerformed(evt);
             }
         });
 
@@ -158,7 +176,11 @@ public class PrincCafeterias extends javax.swing.JFrame {
         jLabel3.setText("Busqueda por código");
         jLabel3.setToolTipText("");
 
+        Volver.setBackground(new java.awt.Color(160, 126, 120));
+        Volver.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Volver.setForeground(new java.awt.Color(41, 30, 28));
         Volver.setText("Volver");
+        Volver.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VolverActionPerformed(evt);
@@ -170,63 +192,58 @@ public class PrincCafeterias extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(147, 147, 147)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(textoBusqCodi, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(botonBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel3)))))
-                .addGap(42, 42, 42))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(177, Short.MAX_VALUE)
-                .addComponent(InsertarCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(EditarCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(EliminarCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(Actualizar)
-                .addGap(18, 18, 18)
-                .addComponent(Volver)
-                .addGap(58, 58, 58))
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(67, 67, 67)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(InsertarCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EditarCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EliminarCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(buscCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(BuscadorCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(15, 15, 15)
+                                    .addComponent(jLabel3)))
+                            .addComponent(Volver, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(jLabel2)))
+                .addGap(0, 55, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(textoBusqCodi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonBuscador))))
-                .addGap(12, 12, 12)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(InsertarCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EditarCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EliminarCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(Actualizar))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(Volver)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                            .addComponent(buscCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BuscadorCafeteria))
+                        .addGap(18, 18, 18)
+                        .addComponent(InsertarCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(EditarCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(EliminarCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(Volver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -306,7 +323,7 @@ public class PrincCafeterias extends javax.swing.JFrame {
 //        insercion.setLocationRelativeTo(null);
     }//GEN-LAST:event_InsertarCafeteriaActionPerformed
 
-    private void botonBuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscadorActionPerformed
+    private void BuscadorCafeteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscadorCafeteriaActionPerformed
 
 //        Facturas factBusq;
 //
@@ -328,11 +345,11 @@ public class PrincCafeterias extends javax.swing.JFrame {
 //            JOptionPane.showMessageDialog(null, "La factura no existe");
 //        }
 //
-    }//GEN-LAST:event_botonBuscadorActionPerformed
+    }//GEN-LAST:event_BuscadorCafeteriaActionPerformed
 
-    private void textoBusqCodiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoBusqCodiActionPerformed
+    private void buscCafeteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscCafeteriaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textoBusqCodiActionPerformed
+    }//GEN-LAST:event_buscCafeteriaActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         // "CIERRA" LA VENTANA
@@ -342,17 +359,17 @@ public class PrincCafeterias extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Actualizar;
+    private javax.swing.JButton BuscadorCafeteria;
     private javax.swing.JButton EditarCafeteria;
     private javax.swing.JButton EliminarCafeteria;
     private javax.swing.JButton InsertarCafeteria;
     private javax.swing.JButton Volver;
-    private javax.swing.JButton botonBuscador;
+    private javax.swing.JTextField buscCafeteria;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaCafeterias;
-    private javax.swing.JTextField textoBusqCodi;
     // End of variables declaration//GEN-END:variables
 }
