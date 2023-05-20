@@ -125,7 +125,7 @@ public class Encargado implements Serializable {
 
     @Override
     public String toString() {
-        return "Encargado[" + "Id: " + id + "| Nombre: " + nombre + "| Apellidos: " + apellidos + "| Edad: " + edad + ']';
+        return "Encargado[" + "Id: " + id + "| Nombre: " + nombre +  ']';
     }
 
     
