@@ -141,6 +141,28 @@ public class Principal extends javax.swing.JFrame {
         gatos.cargarTabla();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    /*
+    
+    La aplicación debe incluir un sistema de copias de seguridad, de forma que 
+    cuando el usuario solicite hacer una copia se debe crear una carpeta nombrada
+    según la fecha y hora actuales, bajo la carpeta "copias". En dicha carpeta se 
+    deben incluir los datos de las tablas en formato CSV, en archivos separados, 
+    con el mismo nombre de la tabla correspondiente. 
+    
+    Para restaurar una copia, 
+    el sistema debe listar las posibles copias existentes en el programa, eligiendo 
+    el usuario la copia a volcar. El programa borrará todas las tuplas de todas las 
+    tablas y procederá a guardar los datos que haya en los archivos de backup, dejando 
+    el sistema en el mismo estado que reflejan los archivos.
+    
+    Puedes incluir tantas clases como necesites y por supuesto debes utilizar las entidades y controladores creados.
+    El proyecto completo se defenderá, corregirá y probará en los equipos del aula por cada alumno/a durante la última semana de clase. 
+
+    */
+    
+    public static void copiaDeSeguridad(){
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
