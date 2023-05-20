@@ -125,7 +125,7 @@ public class Gato implements Serializable {
 
     @Override
     public String toString() {
-        return "Gato: " + nombre + " [" + id + "]";
+        return nombre + " [" + id + "]";
     }
 
     

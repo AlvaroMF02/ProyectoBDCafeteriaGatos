@@ -157,7 +157,7 @@ public class Cafeteria implements Serializable {
     // TO STRING SIN CONCATENADAS
     @Override
     public String toString() {
-        return "Cafeteria: " + nombre + " [" + id + "]";
+        return nombre + " [" + id + "]";
     }
 
 }
