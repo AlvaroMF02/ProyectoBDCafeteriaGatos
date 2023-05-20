@@ -10,7 +10,7 @@ public class Main {
         Principal princ = new Principal();
         princ.setVisible(true);
         princ.setLocationRelativeTo(null);
-        //princ.cargarTabla();
+        
     }
     
 }
