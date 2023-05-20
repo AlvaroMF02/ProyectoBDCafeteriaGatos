@@ -37,6 +37,21 @@ public class Main {
         Date fecha = Date.from(Instant.now());
         List<Gato> listaGatosVacia = new ArrayList<>();
 
+        // CREAR 3 ENCARGADOS
+        Encargado e1 = new Encargado(1, "Alberto", "Flores", 20);
+        Encargado e2 = new Encargado(2, "Lara", "Coronado", 22);
+        Encargado e3 = new Encargado(3, "Juán", "García", 19);
+
+        // CREAR 3 CAFETERIAS   (sin gatos)
+        Cafeteria c1 = new Cafeteria(1, "Tudela", fecha, BigDecimal.valueOf(289.50), e3, listaGatosVacia);
+        Cafeteria c2 = new Cafeteria(2, "Bonbon", fecha, BigDecimal.valueOf(590.50), e2, listaGatosVacia);
+        Cafeteria c3 = new Cafeteria(3, "Gaturro", fecha, BigDecimal.valueOf(987.50), e1, listaGatosVacia);
+
+        // CREAR 3 GATOS        (2 gatos en la cafeteria 3 y uno en la 1)
+        Gato g1 = new Gato(1, "Nino", "Persa", 2, c3);
+        Gato g2 = new Gato(2, "Luka", "Siames", 5, c3);
+        Gato g3 = new Gato(3, "Keca", "Shortair", 1, c1);
+
         // METODO DE CONSULTA DE ENCARGADO
         List<Encargado> encargados = controlador.obtenerEncargados();
         System.out.println("\n#### LISTA DE ENCARGADOS ####");
@@ -52,68 +67,65 @@ public class Main {
         System.out.println("\n#### LISTA DE CAFETERÍAS ####");
         cafeterias.forEach(System.out::println);
 
-        /*
         // CREAR UNA ENTIDAD ENCARGADO
         System.out.println("\n\n\n#### AÑADIR UN ENCARGADO NUEVO ####");
-        Encargado crearEncargado = new Encargado(4, "Álvaro", "Martínez", 20);
-        //controlador.crearEncargado(crearEncargado);
+        Encargado e11 = new Encargado(11, "Álvaro", "Martínez", 20);
+        // controlador.crearEncargado(e11);
         encargados.forEach(System.out::println);
 
         // CREAR UNA ENTIDAD CAFETERIA
         System.out.println("\n#### AÑADIR UNA CAFETERÍA NUEVA ####");
-        Cafeteria cafeteriaNueva = new Cafeteria(4, "Gaturro", fecha,
-                BigDecimal.valueOf(987.50), crearEncargado, listaGatosVacia);
-        // controlador.crearCafeteria(cafeteriaNueva);
+        Cafeteria c5 = new Cafeteria(5, "Gaturro", fecha, BigDecimal.valueOf(987.50), e11, listaGatosVacia);
+        // controlador.crearCafeteria(c5);
         cafeterias.forEach(System.out::println);
 
         // CREAR UNA ENTIDAD GATO
         System.out.println("\n#### AÑADIR UN GATO NUEVO ####");
-        Gato crearGato = new Gato(4, "Michito", "Naranja", 6, cafeteriaNueva);
-        // controlador.crearGato(crearGato);
+        Gato g11 = new Gato(11, "Michito", "Naranja", 6, c5);
+        // controlador.crearGato(g11);
+        gatos.forEach(System.out::println);
+
+        // MODIFICAR UNA ENTIDAD GATO
+        System.out.println("\n\n\n#### MODIFICACIÓN DE UN GATO (4, CAMBIO DE EDAD) ####");
+        Gato gatoEditado = new Gato(4, "Michito", "Naranja", 2, c1);
+        // controlador.editarGato(gatoEditado);
         gatos.forEach(System.out::println);
 
         // AL EDITAR HAY QUE TENER MUCHO CUIDADO EN LOS ID DE CAFETERIA Y GATO
         // MODIFICAR UNA ENTIDAD CAFETERIA
-        System.out.println("\n\n\n#### MODIFICACIÓN DE UNA CAFETERIA (4, CAMBIO DE NOMBRE Y COSTES) ####");
-        Cafeteria cafeteriaEditada = new Cafeteria(4, "Michiss", fecha,
-                BigDecimal.valueOf(289.50), crearEncargado, listaGatosVacia);
-        controlador.editarCafeteria(cafeteriaEditada);
+        System.out.println("\n#### MODIFICACIÓN DE UNA CAFETERIA (4, CAMBIO DE NOMBRE Y COSTES) ####");
+        Cafeteria cafeteriaEditada = new Cafeteria(4, "MichiFeteria", fecha,
+                BigDecimal.valueOf(289.50), e11, listaGatosVacia);
+        // controlador.editarCafeteria(cafeteriaEditada);
         cafeterias.forEach(System.out::println);
 
-        // MODIFICAR UNA ENTIDAD GATO
-        System.out.println("\n#### MODIFICACIÓN DE UN GATO (6, CAMBIO DE EDAD) ####");
-        Gato gatoEditado = new Gato(6, "Michito", "Naranja", 2, cafeteriaNueva);
-        // controlador.editarGato(gatoEditado);
-        gatos.forEach(System.out::println);
-
         // MODIFICAR UNA ENTIDAD ENCARGADO
-        System.out.println("\n#### MODIFICACIÓN DE UN ENCARGADO (8, APELLIDO COMPLETO, Y EDAD) ####");
-        Encargado encargadoEditado = new Encargado(8, "Álvaro", "Martínez Flores", 24);
-        controlador.editarEncargado(encargadoEditado);
+        System.out.println("\n#### MODIFICACIÓN DE UN ENCARGADO (5) ####");
+        Encargado encargadoEditado = new Encargado(5, "Cinthya", "Sanches", 17);
+        // controlador.editarEncargado(encargadoEditado);
         encargados.forEach(System.out::println);
 
         // ELIMINAR ENCARGADO (NO TIENEN RELACIÓN)                              CAMBIAR DATOS PARA QUE ACEPTE NULOS
-        System.out.println("\n\n\n#### BORRADO DE UN ENCARGADO (6) ####");
+        System.out.println("\n\n\n#### BORRADO DE UN ENCARGADO (10) ####");
         try {
-            controlador.eliminarEncargado(6);
+            controlador.eliminarEncargado(10);
             encargados.forEach(System.out::println);
         } catch (NonexistentEntityException nee) {
             System.out.println("Ese encargado no existe");
         }
 
         // ELIMINAR GATO (RELACIONADA CAFETERIA)
-        System.out.println("\n#### BORRADO DE UN GATO (4) ####");
+        System.out.println("\n#### BORRADO DE UN GATO (11) ####");
         try {
-            controlador.eliminarGato(4);
+            controlador.eliminarGato(11);
             gatos.forEach(System.out::println);
         } catch (NonexistentEntityException nee) {
             System.out.println("Ese gato no existe");
         }
 
         // ELIMINAR CAFETERIA (RELACIONADA CON ENCARGADO Y DATO)
-        System.out.println("\n#### BORRADO DE UNA CAFETERIA (1) ####");
-        //controlador.eliminarCafeteria(1);
-        
-        */
+        System.out.println("\n#### BORRADO DE UNA CAFETERIA (5) ####");
+        controlador.eliminarCafeteria(5);
+
     }
 }
