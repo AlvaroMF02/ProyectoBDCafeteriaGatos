@@ -42,6 +42,7 @@ public class Principal extends javax.swing.JFrame {
         Encargados = new javax.swing.JButton();
         Gatos = new javax.swing.JButton();
         CopiaSeguridad = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -89,12 +90,18 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        CopiaSeguridad.setBackground(new java.awt.Color(160, 126, 120));
+        CopiaSeguridad.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        CopiaSeguridad.setForeground(new java.awt.Color(41, 30, 28));
         CopiaSeguridad.setText("Copia de Seguridad");
+        CopiaSeguridad.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         CopiaSeguridad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CopiaSeguridadActionPerformed(evt);
             }
         });
+
+        jButton1.setText("Restaurar copias");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -114,7 +121,10 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(Cafeterias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Gatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Encargados, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                            .addComponent(CopiaSeguridad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(CopiaSeguridad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(234, 234, 234)
+                        .addComponent(jButton1)))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -131,8 +141,10 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(Gatos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(CopiaSeguridad)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addComponent(CopiaSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -178,23 +190,14 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_CopiaSeguridadActionPerformed
 
     /*
-    
-    La aplicación debe incluir un sistema de copias de seguridad, de forma que 
-    cuando el usuario solicite hacer una copia se debe crear una carpeta nombrada
-    según la fecha y hora actuales, bajo la carpeta "copias". En dicha carpeta se 
-    deben incluir los datos de las tablas en formato CSV, en archivos separados, 
-    con el mismo nombre de la tabla correspondiente. 
-    
     Para restaurar una copia, 
     el sistema debe listar las posibles copias existentes en el programa, eligiendo 
     el usuario la copia a volcar. El programa borrará todas las tuplas de todas las 
     tablas y procederá a guardar los datos que haya en los archivos de backup, dejando 
     el sistema en el mismo estado que reflejan los archivos.
-    
-    Puedes incluir tantas clases como necesites y por supuesto debes utilizar las entidades y controladores creados.
-    El proyecto completo se defenderá, corregirá y probará en los equipos del aula por cada alumno/a durante la última semana de clase. 
-
      */
+    
+    // CREACION DE LOS DIRECTORIOS PARA LA COPIA DE SEGURIDAD Y SUS FICHEROS
     private void copiaDeSeguridad() {
 
         String ruta = DateTimeFormatter.ofPattern("dd-MM-yyyy(hh-mm)")
@@ -239,6 +242,7 @@ public class Principal extends javax.swing.JFrame {
             System.out.println("Error creando el fichero");
         }
     }
+    
     // CREACION DE LA COPIA CSV DE ENCARGADOS
     private void crearCopiaEncargados(List<Encargado> listaEnc, String ruta){
         
@@ -255,6 +259,7 @@ public class Principal extends javax.swing.JFrame {
             System.out.println("Error creando el fichero");
         }
     }
+    
     // CREACION DE LA COPIA CSV DE GATOS
     private void crearCopiaGatos(List<Gato> listaGat, String ruta){
         
@@ -277,6 +282,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton CopiaSeguridad;
     private javax.swing.JButton Encargados;
     private javax.swing.JButton Gatos;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

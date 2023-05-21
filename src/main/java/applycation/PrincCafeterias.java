@@ -317,10 +317,9 @@ public class PrincCafeterias extends javax.swing.JFrame {
     }//GEN-LAST:event_EditarCafeteriaActionPerformed
 
     private void InsertarCafeteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarCafeteriaActionPerformed
-//        // TODO add your handling code here:
-//        InsertarFactura insercion = new InsertarFactura();
-//        insercion.setVisible(true);
-//        insercion.setLocationRelativeTo(null);
+        InsertarCafeteria insercion = new InsertarCafeteria();
+        insercion.setVisible(true);
+        insercion.setLocationRelativeTo(null);
     }//GEN-LAST:event_InsertarCafeteriaActionPerformed
 
     private void BuscadorCafeteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscadorCafeteriaActionPerformed
