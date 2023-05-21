@@ -19,12 +19,11 @@ import javax.swing.JOptionPane;
 public class InsertarCafeteria extends javax.swing.JFrame {
 
     private Controlador controlador = new Controlador();
-    
+
     public InsertarCafeteria() {
         initComponents();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -171,18 +170,18 @@ public class InsertarCafeteria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AnyadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnyadirActionPerformed
-        
-         Cafeteria cafeteriaInser = new Cafeteria();
-         List<Gato> listaVacia = new ArrayList<>();
-         
-         Integer idEncarfado =Integer.valueOf(inserEncargado.getText());
+
+        Cafeteria cafeteriaInser = new Cafeteria();
+        List<Gato> listaVacia = new ArrayList<>();
+
+        Integer idEncarfado = Integer.valueOf(inserEncargado.getText());
 
         // PARSEO Y ASIGNACIÓN
         cafeteriaInser.setId(0);// DA IGUAL PQ ES AUTOINCREMENT
         cafeteriaInser.setNombre(inserNombre.getText());
         cafeteriaInser.setCostePedidoMensu(BigDecimal.valueOf(Double.parseDouble(inserCostes.getText())));
         cafeteriaInser.setGatoList(listaVacia);
-        
+
         // PARSEAR LA FECHA PARA DATE
         SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
         try {
@@ -191,23 +190,20 @@ public class InsertarCafeteria extends javax.swing.JFrame {
             //JPANEL NO SE HA ESCRITO BIEN LA FECHA
             JOptionPane.showMessageDialog(null, "No se ha introducido bien la fecha");
         }
-        
+
         // BUSQUEDA DE UN ENCARGADO PARA PONERLO EN LA CAFETERIA
         // DA ERROR DICIENDO QUE EL BUSCADOR NO ENCUENTRA AL ENCARGADO, PERO LUEGO AL
         // BUSCARLO SI FUNCIONA NS
         Encargado encargado = controlador.encargPorId(idEncarfado);
         cafeteriaInser.setIdEncargado(encargado);
-        
-        
+
         // ERROR, EL ENCARGADO NO PUEDE EXISTIR O EL ENCARGADO YA ESTA EN OTRA CAFETERIA
         try {
             controlador.crearCafeteria(cafeteriaInser);
         } catch (IllegalOrphanException ex) {
             JOptionPane.showMessageDialog(null, "El encargado ya está en una cafetería");
         }
-        
-        
-        
+
         // "CIERRA" LA VENTANA
         this.dispose();
 
@@ -215,7 +211,6 @@ public class InsertarCafeteria extends javax.swing.JFrame {
         //PrincEncargado.cargarTabla();
     }//GEN-LAST:event_AnyadirActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Anyadir;

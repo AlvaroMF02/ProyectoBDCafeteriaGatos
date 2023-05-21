@@ -1,6 +1,16 @@
 package applycation;
 
 import controllers.Controlador;
+import controllers.exceptions.IllegalOrphanException;
+import entities.Cafeteria;
+import entities.Encargado;
+import entities.Gato;
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -9,12 +19,11 @@ import controllers.Controlador;
 public class InsertarGato extends javax.swing.JFrame {
 
     private Controlador controlador = new Controlador();
-    
+
     public InsertarGato() {
         initComponents();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -29,7 +38,7 @@ public class InsertarGato extends javax.swing.JFrame {
         inserEdad = new javax.swing.JTextField();
         Volver = new javax.swing.JButton();
         Anyadir = new javax.swing.JButton();
-        inserEdad1 = new javax.swing.JTextField();
+        inserCafeteria = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,9 +74,14 @@ public class InsertarGato extends javax.swing.JFrame {
         Volver.setText("Volver");
 
         Anyadir.setText("Añadir");
+        Anyadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnyadirActionPerformed(evt);
+            }
+        });
 
-        inserEdad1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        inserEdad1.setToolTipText("");
+        inserCafeteria.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        inserCafeteria.setToolTipText("");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(160, 126, 120));
@@ -97,7 +111,7 @@ public class InsertarGato extends javax.swing.JFrame {
                                     .addComponent(Anyadir)
                                     .addComponent(jLabel7))
                                 .addGap(18, 18, 18)
-                                .addComponent(inserEdad1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inserCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(65, 65, 65)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Volver))
@@ -111,7 +125,6 @@ public class InsertarGato extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
@@ -129,7 +142,7 @@ public class InsertarGato extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(inserEdad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inserCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Anyadir)
@@ -151,14 +164,38 @@ public class InsertarGato extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void AnyadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnyadirActionPerformed
+
+        Gato gatoInser = new Gato();
+
+        // PARSEO Y ASIGNACIÓN
+        gatoInser.setId(0);// DA IGUAL PQ ES AUTOINCREMENT
+        gatoInser.setNombre(inserNombre.getText());
+        gatoInser.setRaza(inserNombre.getText());
+        gatoInser.setEdad(Integer.parseInt(inserEdad.getText()));
+
+        // AL METER UN GATO LO HACE SOLO O TENGO QUE IR AL ATRIBUTO LISTA DE LA CAFETERIA Y AÑADIRLO?
+        Integer idCafeteria = Integer.valueOf(inserCafeteria.getText());
+        Cafeteria cafeteria = controlador.cafetPorId(idCafeteria);
+        gatoInser.setIdCafeteria(cafeteria);
+
+        // DA EL MISMO ERROR QUE AL AÑADIR UNA CAFETERIA
+        controlador.crearGato(gatoInser);
+
+        // "CIERRA" LA VENTANA
+        this.dispose();
+
+        // ACTUALIZA LA TABLA
+        //PrincEncargado.cargarTabla();
+    }//GEN-LAST:event_AnyadirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Anyadir;
     private javax.swing.JButton Volver;
     private javax.swing.JTextField inserApellidos;
+    private javax.swing.JTextField inserCafeteria;
     private javax.swing.JTextField inserEdad;
-    private javax.swing.JTextField inserEdad1;
     private javax.swing.JTextField inserNombre;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

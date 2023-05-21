@@ -314,10 +314,9 @@ public class PrincGatos extends javax.swing.JFrame {
     }//GEN-LAST:event_EditarGatoActionPerformed
 
     private void InsertarGatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarGatoActionPerformed
-        //        // TODO add your handling code here:
-        //        InsertarFactura insercion = new InsertarFactura();
-        //        insercion.setVisible(true);
-        //        insercion.setLocationRelativeTo(null);
+                InsertarGato insercion = new InsertarGato();
+                insercion.setVisible(true);
+                insercion.setLocationRelativeTo(null);
     }//GEN-LAST:event_InsertarGatoActionPerformed
 
     private void botonBuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscadorActionPerformed
