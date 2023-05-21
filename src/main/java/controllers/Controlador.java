@@ -41,6 +41,11 @@ public class Controlador {
         contEncargado = new EncargadoJpaController();
         contEncargado.destroy(id);
     }
+    
+    // BUSCAR UN ENCARGADO POR EL ID
+    public Encargado encargPorId(Integer id) {
+        return contEncargado.findEncargado(id);
+    }
 
     // # # #  # # # # # # # # METODOS GATOS # # # # # # # # # # # //
     // OBTENER A TODOS LOS GATOS
@@ -66,6 +71,11 @@ public class Controlador {
         contGato = new GatoJpaController();
         contGato.destroy(id);
     }
+    
+    // BUSCAR UN GATO POR EL ID
+    public Gato gatoPorId(Integer id) {
+        return contGato.findGato(id);
+    }
 
     // # # # # # # # # # # METODOS CAFETERIAS # # # # # # # # # # //
     // OBTENER TODAS LAS CAFETERIAS
@@ -90,6 +100,11 @@ public class Controlador {
     public void eliminarCafeteria(Integer id) throws IllegalOrphanException, NonexistentEntityException{
         contCafeteria = new CafeteriaJpaController();
         contCafeteria.destroy(id);
+    }
+    
+    // BUSCAR UNA CAFETERIA POR EL ID
+    public Cafeteria cafetPorId(Integer id) {
+        return contCafeteria.findCafeteria(id);
     }
 
 }

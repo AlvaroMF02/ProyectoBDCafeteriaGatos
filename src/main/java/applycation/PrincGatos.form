@@ -57,25 +57,28 @@
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                       <Component id="Actualizar" min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="86" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                          <Component id="InsertarEncargado" alignment="1" min="-2" pref="153" max="-2" attributes="0"/>
-                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="textoBusqEncargados" min="-2" pref="64" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="botonBuscador" min="-2" pref="77" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="InsertarGato" alignment="1" min="-2" pref="153" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="EditarGato" alignment="1" min="-2" pref="153" max="-2" attributes="0"/>
+                                  <Component id="EliminarGato" alignment="1" min="-2" pref="153" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="Volver" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="EditarEncargado" alignment="1" min="-2" pref="153" max="-2" attributes="0"/>
-                          <Component id="EliminarEncargado" alignment="1" min="-2" pref="153" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="Volver" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                          <Component id="textBuscGato" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="botonBuscador" min="-2" pref="77" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
@@ -92,15 +95,15 @@
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="textoBusqEncargados" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="botonBuscador" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="textBuscGato" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="InsertarEncargado" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="InsertarGato" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="EditarEncargado" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="EditarGato" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="EliminarEncargado" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="EliminarGato" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -230,7 +233,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VolverActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="EliminarEncargado">
+        <Component class="javax.swing.JButton" name="EliminarGato">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="78" green="7e" red="a0" type="rgb"/>
@@ -249,10 +252,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EliminarEncargadoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EliminarGatoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="EditarEncargado">
+        <Component class="javax.swing.JButton" name="EditarGato">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="78" green="7e" red="a0" type="rgb"/>
@@ -271,10 +274,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditarEncargadoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditarGatoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="InsertarEncargado">
+        <Component class="javax.swing.JButton" name="InsertarGato">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="78" green="7e" red="a0" type="rgb"/>
@@ -293,12 +296,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InsertarEncargadoActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="textoBusqEncargados">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoBusqEncargadosActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InsertarGatoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonBuscador">
@@ -331,6 +329,8 @@
             <Property name="text" type="java.lang.String" value="Busqueda por c&#xf3;digo"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="textBuscGato">
         </Component>
       </SubComponents>
     </Container>

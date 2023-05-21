@@ -2,7 +2,9 @@ package applycation;
 
 import controllers.Controlador;
 import entities.Cafeteria;
+import entities.Encargado;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -324,26 +326,26 @@ public class PrincCafeterias extends javax.swing.JFrame {
 
     private void BuscadorCafeteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscadorCafeteriaActionPerformed
 
-//        Facturas factBusq;
-//
-//        // TRY CATCH POR EL NULL POINTER
-//        try {
-//            factBusq = controlador.findFacturas(textoBusqCodi.getText());
-//            String codigo = factBusq.getCodigo();
-//            Date fechEmis = factBusq.getFechEmision();
-//            String descrip = factBusq.getDescripcion();
-//            BigDecimal impor = factBusq.getTotalImporte();
-//
-//            JOptionPane.showMessageDialog(null, "### Factura Buscada ###\n\n"
-//                + "Código: " + codigo + "\n"
-//                + "Fecha Emisión: " + fechEmis + "\n"
-//                + "Descripción: " + descrip + "\n"
-//                + "Total Importe: " + impor + "\n");
-//
-//        } catch (NullPointerException npe) {
-//            JOptionPane.showMessageDialog(null, "La factura no existe");
-//        }
-//
+        Cafeteria cafeteriaBuscar;
+
+        // TRY CATCH POR EL NULL POINTER
+        try {
+            //BUSCAR CAFETERIA Y MOSTRARLO POR PANTALLA
+            cafeteriaBuscar = controlador.cafetPorId(Integer.valueOf(buscCafeteria.getText()));
+
+            JOptionPane.showMessageDialog(null, "### Cafeteria Buscado ###\n\n"
+                    + "Id: " + cafeteriaBuscar.getId() + "\n"
+                    + "Nombre: " + cafeteriaBuscar.getNombre() + "\n"
+                    + "Fecha Apertura: " + cafeteriaBuscar.getFecApertLocalDate()+ "\n"
+                    + "Coste Mensual: " + cafeteriaBuscar.getCostePedidoMensu() + "\n"
+                    + "Encargado: " + cafeteriaBuscar.getIdEncargado() + "\n");
+
+        } catch (NullPointerException | NumberFormatException npe) {
+            JOptionPane.showMessageDialog(null, "La cafetería no existe");
+        }
+
+        // PONER EN BLANCO
+        buscCafeteria.setText("");
     }//GEN-LAST:event_BuscadorCafeteriaActionPerformed
 
     private void buscCafeteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscCafeteriaActionPerformed

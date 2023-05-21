@@ -3,6 +3,7 @@ package applycation;
 import controllers.Controlador;
 import entities.Encargado;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,7 +17,7 @@ public class PrincEncargados extends javax.swing.JFrame {
     public PrincEncargados() {
         initComponents();
     }
-    
+
     // COGE LOS DATOS DE LA BD Y LOS METE EN LA TABLA
     public void cargarTabla() {
 
@@ -271,33 +272,33 @@ public class PrincEncargados extends javax.swing.JFrame {
 
     private void botonBuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscadorActionPerformed
 
-        //        Facturas factBusq;
-        //
-        //        // TRY CATCH POR EL NULL POINTER
-        //        try {
-            //            factBusq = controlador.findFacturas(textoBusqCodi.getText());
-            //            String codigo = factBusq.getCodigo();
-            //            Date fechEmis = factBusq.getFechEmision();
-            //            String descrip = factBusq.getDescripcion();
-            //            BigDecimal impor = factBusq.getTotalImporte();
-            //
-            //            JOptionPane.showMessageDialog(null, "### Factura Buscada ###\n\n"
-                //                + "Código: " + codigo + "\n"
-                //                + "Fecha Emisión: " + fechEmis + "\n"
-                //                + "Descripción: " + descrip + "\n"
-                //                + "Total Importe: " + impor + "\n");
-            //
-            //        } catch (NullPointerException npe) {
-            //            JOptionPane.showMessageDialog(null, "La factura no existe");
-            //        }
-        //
+        Encargado encBusca;
+
+        // TRY CATCH POR EL NULL POINTER
+        try {
+            //BUSCAR AL ENCARGADO Y MOSTRARLO POR PANTALLA
+            encBusca = controlador.encargPorId(Integer.valueOf(textoBusqEncargados.getText()));
+
+            JOptionPane.showMessageDialog(null, "### Encargado Buscado ###\n\n"
+                    + "Id: " + encBusca.getId() + "\n"
+                    + "Nombre: " + encBusca.getNombre() + "\n"
+                    + "Apellidos: " + encBusca.getApellidos() + "\n"
+                    + "Edad: " + encBusca.getEdad() + "\n");
+
+        } catch (NullPointerException | NumberFormatException npe) {
+            JOptionPane.showMessageDialog(null, "El encargado no existe");
+        }
+
+        // PONER EN BLANCO
+        textoBusqEncargados.setText("");
+
     }//GEN-LAST:event_botonBuscadorActionPerformed
 
     // ABRE LA INTERFAZ PARA HACER LA INSERCION DE UN ENCARGADO
     private void InsertarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarEncargadoActionPerformed
-                InsertarEncargado insercion = new InsertarEncargado();
-                insercion.setVisible(true);
-                insercion.setLocationRelativeTo(null);
+        InsertarEncargado insercion = new InsertarEncargado();
+        insercion.setVisible(true);
+        insercion.setLocationRelativeTo(null);
     }//GEN-LAST:event_InsertarEncargadoActionPerformed
 
     private void EditarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarEncargadoActionPerformed
@@ -305,48 +306,48 @@ public class PrincEncargados extends javax.swing.JFrame {
         //
         //        // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
         //        if (tablaFacturas.getRowCount() > 0) {
-            //            // SI ESTA SELECCIONADO
-            //            if (tablaFacturas.getSelectedRow() != -1) {
-                //
-                //                // FILA SELECCIONADA COLUMNA 0
-                //                codigo = String.valueOf(tablaFacturas.getValueAt(tablaFacturas.getSelectedRow(), 0));
-                //
-                //                EditarFactura consultaFactura = new EditarFactura(codigo);
-                //                consultaFactura.setVisible(true);
-                //                consultaFactura.setLocationRelativeTo(null);
-                //
-                //            } else {
-                //                JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
-                //            }
-            //        } else {
-            //            JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
-            //        }
+        //            // SI ESTA SELECCIONADO
+        //            if (tablaFacturas.getSelectedRow() != -1) {
+        //
+        //                // FILA SELECCIONADA COLUMNA 0
+        //                codigo = String.valueOf(tablaFacturas.getValueAt(tablaFacturas.getSelectedRow(), 0));
+        //
+        //                EditarFactura consultaFactura = new EditarFactura(codigo);
+        //                consultaFactura.setVisible(true);
+        //                consultaFactura.setLocationRelativeTo(null);
+        //
+        //            } else {
+        //                JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
+        //            }
+        //        } else {
+        //            JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
+        //        }
     }//GEN-LAST:event_EditarEncargadoActionPerformed
 
     private void EliminarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarEncargadoActionPerformed
         //        String codigo = "";
         //        // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
         //        if (tablaFacturas.getRowCount() > 0) {
-            //            // SI ESTA SELECCIONADO
-            //            if (tablaFacturas.getSelectedRow() != -1) {
-                //                // FILA SELECCIONADA COLUMNA 0
-                //                codigo = String.valueOf(tablaFacturas.getValueAt(tablaFacturas.getSelectedRow(), 0));
-                //
-                //                // METODO JPA PARA ELIMINAR
-                //                try {
-                    //                    controlador.destroy(codigo);
-                    //                } catch (NonexistentEntityException ex) {
-                    //                }
-                //
-                //                JOptionPane.showMessageDialog(null, "Factura borrada correctamente");
-                //                cargarTabla();
-                //
-                //            } else {
-                //                JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
-                //            }
-            //        } else {
-            //            JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
-            //        }
+        //            // SI ESTA SELECCIONADO
+        //            if (tablaFacturas.getSelectedRow() != -1) {
+        //                // FILA SELECCIONADA COLUMNA 0
+        //                codigo = String.valueOf(tablaFacturas.getValueAt(tablaFacturas.getSelectedRow(), 0));
+        //
+        //                // METODO JPA PARA ELIMINAR
+        //                try {
+        //                    controlador.destroy(codigo);
+        //                } catch (NonexistentEntityException ex) {
+        //                }
+        //
+        //                JOptionPane.showMessageDialog(null, "Factura borrada correctamente");
+        //                cargarTabla();
+        //
+        //            } else {
+        //                JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
+        //            }
+        //        } else {
+        //            JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
+        //        }
     }//GEN-LAST:event_EliminarEncargadoActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
