@@ -291,32 +291,32 @@ public class PrincGatos extends javax.swing.JFrame {
     }//GEN-LAST:event_EliminarGatoActionPerformed
 
     private void EditarGatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarGatoActionPerformed
-        //        String codigo = "";
-        //
-        //        // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
-        //        if (tablaFacturas.getRowCount() > 0) {
-        //            // SI ESTA SELECCIONADO
-        //            if (tablaFacturas.getSelectedRow() != -1) {
-        //
-        //                // FILA SELECCIONADA COLUMNA 0
-        //                codigo = String.valueOf(tablaFacturas.getValueAt(tablaFacturas.getSelectedRow(), 0));
-        //
-        //                EditarFactura consultaFactura = new EditarFactura(codigo);
-        //                consultaFactura.setVisible(true);
-        //                consultaFactura.setLocationRelativeTo(null);
-        //
-        //            } else {
-        //                JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
-        //            }
-        //        } else {
-        //            JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
-        //        }
+        Integer id;
+
+        // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
+        if (tablaGatos.getRowCount() > 0) {
+            // SI ESTA SELECCIONADO
+            if (tablaGatos.getSelectedRow() != -1) {
+
+                // FILA x SELECCIONADA COLUMNA 0
+                id = Integer.valueOf(String.valueOf(tablaGatos.getValueAt(tablaGatos.getSelectedRow(), 0)));
+
+                EditarGato consultaFactura = new EditarGato(id);
+                consultaFactura.setVisible(true);
+                consultaFactura.setLocationRelativeTo(null);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
+        }
     }//GEN-LAST:event_EditarGatoActionPerformed
 
     private void InsertarGatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarGatoActionPerformed
-                InsertarGato insercion = new InsertarGato();
-                insercion.setVisible(true);
-                insercion.setLocationRelativeTo(null);
+        InsertarGato insercion = new InsertarGato();
+        insercion.setVisible(true);
+        insercion.setLocationRelativeTo(null);
     }//GEN-LAST:event_InsertarGatoActionPerformed
 
     private void botonBuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscadorActionPerformed
@@ -331,7 +331,7 @@ public class PrincGatos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "### Cafeteria Buscado ###\n\n"
                     + "Id: " + gatoBuscar.getId() + "\n"
                     + "Nombre: " + gatoBuscar.getNombre() + "\n"
-                    + "Raza: " + gatoBuscar.getRaza()+ "\n"
+                    + "Raza: " + gatoBuscar.getRaza() + "\n"
                     + "Edad: " + gatoBuscar.getEdad() + "\n"
                     + "Cafetería: " + gatoBuscar.getIdCafeteria() + "\n");
 
@@ -341,7 +341,7 @@ public class PrincGatos extends javax.swing.JFrame {
 
         // PONER EN BLANCO
         textBuscGato.setText("");
-       
+
     }//GEN-LAST:event_botonBuscadorActionPerformed
 
 

@@ -75,6 +75,7 @@ public class Controlador {
     
     // BUSCAR UN GATO POR EL ID
     public Gato gatoPorId(Integer id) {
+        contGato = new GatoJpaController();
         return contGato.findGato(id);
     }
 
@@ -105,6 +106,7 @@ public class Controlador {
     
     // BUSCAR UNA CAFETERIA POR EL ID
     public Cafeteria cafetPorId(Integer id) {
+        contCafeteria = new CafeteriaJpaController();
         return contCafeteria.findCafeteria(id);
     }
 
