@@ -2,10 +2,6 @@ package applycation;
 
 import controllers.Controlador;
 import entities.Encargado;
-import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import javax.swing.JOptionPane;
 
 /**
  *

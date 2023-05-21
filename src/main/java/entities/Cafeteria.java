@@ -70,7 +70,7 @@ public class Cafeteria implements Serializable {
         this.id = id;
     }
 
-    public Cafeteria(Integer id, String nombre, Date fecApert, BigDecimal costePedidoMensu, Encargado idEncargado,List<Gato> gatoList) {
+    public Cafeteria(Integer id, String nombre, Date fecApert, BigDecimal costePedidoMensu, Encargado idEncargado, List<Gato> gatoList) {
         this.id = id;
         this.nombre = nombre;
         this.fecApert = fecApert;
@@ -159,7 +159,7 @@ public class Cafeteria implements Serializable {
     public String toString() {
         return nombre + " [" + id + "]";
     }
-    
+
     // TO STRING PARA LA COPIA DE SEGURIDAD
     public String toStringCopiaSeguridad() {
         return id + ";" + nombre + ";" + getFecApertLocalDate() + ";" + costePedidoMensu + ";" + idEncargado;

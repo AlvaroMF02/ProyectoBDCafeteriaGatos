@@ -1,6 +1,16 @@
 package applycation;
 
 import controllers.Controlador;
+import controllers.exceptions.IllegalOrphanException;
+import entities.Cafeteria;
+import entities.Encargado;
+import entities.Gato;
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,7 +35,7 @@ public class InsertarCafeteria extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        inserId = new javax.swing.JTextField();
+        inserNombre = new javax.swing.JTextField();
         inserFech = new javax.swing.JTextField();
         inserCostes = new javax.swing.JTextField();
         inserEncargado = new javax.swing.JTextField();
@@ -58,8 +68,8 @@ public class InsertarCafeteria extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(160, 126, 120));
         jLabel7.setText("Encargado (Id)");
 
-        inserId.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        inserId.setToolTipText("");
+        inserNombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        inserNombre.setToolTipText("");
 
         inserFech.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         inserFech.setToolTipText("");
@@ -76,6 +86,11 @@ public class InsertarCafeteria extends javax.swing.JFrame {
         Volver.setText("Volver");
 
         Anyadir.setText("Añadir");
+        Anyadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnyadirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -97,7 +112,7 @@ public class InsertarCafeteria extends javax.swing.JFrame {
                                 .addComponent(inserFech, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel8))
-                            .addComponent(inserId, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inserNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(inserEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -120,7 +135,7 @@ public class InsertarCafeteria extends javax.swing.JFrame {
                         .addComponent(jLabel5))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(inserId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inserNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -155,6 +170,51 @@ public class InsertarCafeteria extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void AnyadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnyadirActionPerformed
+        
+         Cafeteria cafeteriaInser = new Cafeteria();
+         List<Gato> listaVacia = new ArrayList<>();
+         
+         Integer idEncarfado =Integer.valueOf(inserEncargado.getText());
+
+        // PARSEO Y ASIGNACIÓN
+        cafeteriaInser.setId(0);// DA IGUAL PQ ES AUTOINCREMENT
+        cafeteriaInser.setNombre(inserNombre.getText());
+        cafeteriaInser.setCostePedidoMensu(BigDecimal.valueOf(Double.parseDouble(inserCostes.getText())));
+        cafeteriaInser.setGatoList(listaVacia);
+        
+        // PARSEAR LA FECHA PARA DATE
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+        try {
+            cafeteriaInser.setFecApert(formato.parse(inserFech.getText()));
+        } catch (ParseException ex) {
+            //JPANEL NO SE HA ESCRITO BIEN LA FECHA
+            JOptionPane.showMessageDialog(null, "No se ha introducido bien la fecha");
+        }
+        
+        // BUSQUEDA DE UN ENCARGADO PARA PONERLO EN LA CAFETERIA
+        // DA ERROR DICIENDO QUE EL BUSCADOR NO ENCUENTRA AL ENCARGADO, PERO LUEGO AL
+        // BUSCARLO SI FUNCIONA NS
+        Encargado encargado = controlador.encargPorId(idEncarfado);
+        cafeteriaInser.setIdEncargado(encargado);
+        
+        
+        // ERROR, EL ENCARGADO NO PUEDE EXISTIR O EL ENCARGADO YA ESTA EN OTRA CAFETERIA
+        try {
+            controlador.crearCafeteria(cafeteriaInser);
+        } catch (IllegalOrphanException ex) {
+            JOptionPane.showMessageDialog(null, "El encargado ya está en una cafetería");
+        }
+        
+        
+        
+        // "CIERRA" LA VENTANA
+        this.dispose();
+
+        // ACTUALIZA LA TABLA
+        //PrincEncargado.cargarTabla();
+    }//GEN-LAST:event_AnyadirActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -163,7 +223,7 @@ public class InsertarCafeteria extends javax.swing.JFrame {
     private javax.swing.JTextField inserCostes;
     private javax.swing.JTextField inserEncargado;
     private javax.swing.JTextField inserFech;
-    private javax.swing.JTextField inserId;
+    private javax.swing.JTextField inserNombre;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

@@ -61,7 +61,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="inserId" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                              <Component id="inserNombre" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
                               <Component id="inserEncargado" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -92,7 +92,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="inserId" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="inserNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -181,7 +181,7 @@
             <Property name="text" type="java.lang.String" value="Encargado (Id)"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="inserId">
+        <Component class="javax.swing.JTextField" name="inserNombre">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -222,6 +222,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="A&#xf1;adir"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AnyadirActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
