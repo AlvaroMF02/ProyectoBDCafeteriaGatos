@@ -159,5 +159,10 @@ public class Cafeteria implements Serializable {
     public String toString() {
         return nombre + " [" + id + "]";
     }
+    
+    // TO STRING PARA LA COPIA DE SEGURIDAD
+    public String toStringCopiaSeguridad() {
+        return id + ";" + nombre + ";" + getFecApertLocalDate() + ";" + costePedidoMensu + ";" + idEncargado;
+    }
 
 }
