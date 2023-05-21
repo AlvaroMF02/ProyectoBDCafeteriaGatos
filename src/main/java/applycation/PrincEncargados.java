@@ -302,26 +302,26 @@ public class PrincEncargados extends javax.swing.JFrame {
     }//GEN-LAST:event_InsertarEncargadoActionPerformed
 
     private void EditarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarEncargadoActionPerformed
-        //        String codigo = "";
-        //
-        //        // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
-        //        if (tablaFacturas.getRowCount() > 0) {
-        //            // SI ESTA SELECCIONADO
-        //            if (tablaFacturas.getSelectedRow() != -1) {
-        //
-        //                // FILA SELECCIONADA COLUMNA 0
-        //                codigo = String.valueOf(tablaFacturas.getValueAt(tablaFacturas.getSelectedRow(), 0));
-        //
-        //                EditarFactura consultaFactura = new EditarFactura(codigo);
-        //                consultaFactura.setVisible(true);
-        //                consultaFactura.setLocationRelativeTo(null);
-        //
-        //            } else {
-        //                JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
-        //            }
-        //        } else {
-        //            JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
-        //        }
+        Integer codigo;
+
+        // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
+        if (tablaEncargados.getRowCount() > 0) {
+            // SI ESTA SELECCIONADO
+            if (tablaEncargados.getSelectedRow() != -1) {
+
+                // FILA SELECCIONADA COLUMNA 0
+                codigo = Integer.valueOf(String.valueOf(tablaEncargados.getValueAt(tablaEncargados.getSelectedRow(), 0)));
+
+                EditarEncargado consultEncar = new EditarEncargado(codigo);
+                consultEncar.setVisible(true);
+                consultEncar.setLocationRelativeTo(null);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
+        }
     }//GEN-LAST:event_EditarEncargadoActionPerformed
 
     private void EliminarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarEncargadoActionPerformed
