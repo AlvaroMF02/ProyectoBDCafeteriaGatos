@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PrincCafeterias extends javax.swing.JFrame {
 
-    Controlador controlador = new Controlador();
+    private Controlador controlador = new Controlador();
 
     public PrincCafeterias() {
         initComponents();

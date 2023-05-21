@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PrincGatos extends javax.swing.JFrame {
 
-    Controlador controlador = new Controlador();
+    private Controlador controlador = new Controlador();
 
     public PrincGatos() {
         initComponents();

@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
  */
 public class Principal extends javax.swing.JFrame {
 
-    Controlador controlador = new Controlador();
+    private Controlador controlador = new Controlador();
     
     public Principal() {
         initComponents();

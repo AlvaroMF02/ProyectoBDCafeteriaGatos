@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PrincEncargados extends javax.swing.JFrame {
 
-    Controlador controlador = new Controlador();
+    private Controlador controlador = new Controlador();
 
     public PrincEncargados() {
         initComponents();
