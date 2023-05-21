@@ -293,11 +293,11 @@ public class PrincEncargados extends javax.swing.JFrame {
         //
     }//GEN-LAST:event_botonBuscadorActionPerformed
 
+    // ABRE LA INTERFAZ PARA HACER LA INSERCION DE UN ENCARGADO
     private void InsertarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarEncargadoActionPerformed
-        //        // TODO add your handling code here:
-        //        InsertarFactura insercion = new InsertarFactura();
-        //        insercion.setVisible(true);
-        //        insercion.setLocationRelativeTo(null);
+                InsertarEncargado insercion = new InsertarEncargado();
+                insercion.setVisible(true);
+                insercion.setLocationRelativeTo(null);
     }//GEN-LAST:event_InsertarEncargadoActionPerformed
 
     private void EditarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarEncargadoActionPerformed
