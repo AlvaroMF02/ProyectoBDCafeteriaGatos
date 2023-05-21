@@ -44,6 +44,7 @@ public class Controlador {
     
     // BUSCAR UN ENCARGADO POR EL ID
     public Encargado encargPorId(Integer id) {
+        contEncargado = new EncargadoJpaController();
         return contEncargado.findEncargado(id);
     }
 

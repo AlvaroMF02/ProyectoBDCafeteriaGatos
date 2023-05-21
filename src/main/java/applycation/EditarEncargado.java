@@ -3,6 +3,7 @@ package applycation;
 import controllers.Controlador;
 import controllers.EncargadoJpaController;
 import entities.Encargado;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,13 +11,13 @@ import entities.Encargado;
  */
 public class EditarEncargado extends javax.swing.JFrame {
 
-    
     private Controlador controlador = new Controlador();
-    
+    private Integer id;
+
     public EditarEncargado() {
         initComponents();
     }
-    
+
     // CONSTRUCTOR PASANDOLE EL CODIGO DE LA TABLA
     public EditarEncargado(Integer codigo) {
         initComponents();
@@ -24,11 +25,14 @@ public class EditarEncargado extends javax.swing.JFrame {
         // UTILIZANDO EL CONTROLADOR JPA SIN USAR LA CLASE CONTROL NO DA ERROR
         EncargadoJpaController control = new EncargadoJpaController();
         Encargado encarg = control.findEncargado(codigo);
-        
+
         // PASAR LOS ATRIBUTOS A TEXTO PARA LA EDICION
         editNombre.setText(encarg.getNombre());
         editApellidos.setText(encarg.getApellidos());
         editEdad.setText(String.valueOf(encarg.getEdad()));
+
+        this.id = codigo;
+
     }
 
     @SuppressWarnings("unchecked")
@@ -161,9 +165,32 @@ public class EditarEncargado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
-        
+        Encargado encargEdit = new Encargado();
+
+        // PARSEO Y ASIGNACIÓN
+        encargEdit.setId(id);
+        try {
+            encargEdit.setNombre(editNombre.getText());
+            encargEdit.setApellidos(editApellidos.getText());
+            encargEdit.setEdad(Integer.parseInt(editEdad.getText()));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Solo se admiten números en la edad");
+        }
+
+        // NO EDITA A LOS QUE ESTÁN ASIGNADOS A UNA CAFETERIA
+        try {
+            // EDITAR LA FACTURA
+            controlador.editarEncargado(encargEdit);
+        } catch (Exception ex) {
+            //JPANEL NO SE HA PODIDO EDITAR
+            JOptionPane.showMessageDialog(null, "No se ha podido editar");
+        }
+
+        // "CIERRA" LA VENTANA
+        this.dispose();
 
     }//GEN-LAST:event_EditarActionPerformed
+
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         // "CIERRA" LA VENTANA
