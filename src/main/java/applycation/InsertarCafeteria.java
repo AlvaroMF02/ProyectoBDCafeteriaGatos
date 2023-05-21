@@ -1,6 +1,7 @@
 package applycation;
 
 import controllers.Controlador;
+import controllers.EncargadoJpaController;
 import controllers.exceptions.IllegalOrphanException;
 import entities.Cafeteria;
 import entities.Encargado;
@@ -173,13 +174,19 @@ public class InsertarCafeteria extends javax.swing.JFrame {
 
         Cafeteria cafeteriaInser = new Cafeteria();
         List<Gato> listaVacia = new ArrayList<>();
-
-        Integer idEncarfado = Integer.valueOf(inserEncargado.getText());
+        Integer idEncarfado = 0;
+        
 
         // PARSEO Y ASIGNACIÓN
         cafeteriaInser.setId(0);// DA IGUAL PQ ES AUTOINCREMENT
-        cafeteriaInser.setNombre(inserNombre.getText());
-        cafeteriaInser.setCostePedidoMensu(BigDecimal.valueOf(Double.parseDouble(inserCostes.getText())));
+        try {
+            idEncarfado = Integer.valueOf(inserEncargado.getText());
+            cafeteriaInser.setNombre(inserNombre.getText());
+            cafeteriaInser.setCostePedidoMensu(BigDecimal.valueOf(Double.parseDouble(inserCostes.getText())));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Se ha introducido un valor nulo");
+        }
+
         cafeteriaInser.setGatoList(listaVacia);
 
         // PARSEAR LA FECHA PARA DATE
@@ -194,7 +201,11 @@ public class InsertarCafeteria extends javax.swing.JFrame {
         // BUSQUEDA DE UN ENCARGADO PARA PONERLO EN LA CAFETERIA
         // DA ERROR DICIENDO QUE EL BUSCADOR NO ENCUENTRA AL ENCARGADO, PERO LUEGO AL
         // BUSCARLO SI FUNCIONA NS
-        Encargado encargado = controlador.encargPorId(idEncarfado);
+        // AL HACER LA BUSQUEDA CON EL METODO DE JPA SI ME FUNCIONA
+        // ¿POR QUE NO FUNCIONA CON EL OTRO?
+        EncargadoJpaController controlEnca = new EncargadoJpaController();
+        Encargado encargado = controlEnca.findEncargado(idEncarfado);
+//        Encargado encargado = controlador.encargPorId(idEncarfado);
         cafeteriaInser.setIdEncargado(encargado);
 
         // ERROR, EL ENCARGADO NO PUEDE EXISTIR O EL ENCARGADO YA ESTA EN OTRA CAFETERIA

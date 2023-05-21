@@ -1,15 +1,9 @@
 package applycation;
 
+import controllers.CafeteriaJpaController;
 import controllers.Controlador;
-import controllers.exceptions.IllegalOrphanException;
 import entities.Cafeteria;
-import entities.Encargado;
 import entities.Gato;
-import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,7 +28,7 @@ public class InsertarGato extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         inserNombre = new javax.swing.JTextField();
-        inserApellidos = new javax.swing.JTextField();
+        inserRaza = new javax.swing.JTextField();
         inserEdad = new javax.swing.JTextField();
         Volver = new javax.swing.JButton();
         Anyadir = new javax.swing.JButton();
@@ -65,8 +59,8 @@ public class InsertarGato extends javax.swing.JFrame {
         inserNombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         inserNombre.setToolTipText("");
 
-        inserApellidos.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        inserApellidos.setToolTipText("");
+        inserRaza.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        inserRaza.setToolTipText("");
 
         inserEdad.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         inserEdad.setToolTipText("");
@@ -103,7 +97,7 @@ public class InsertarGato extends javax.swing.JFrame {
                                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(inserApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inserRaza, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(inserNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(inserEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -134,7 +128,7 @@ public class InsertarGato extends javax.swing.JFrame {
                             .addComponent(inserNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(inserApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(inserRaza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(inserEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -171,12 +165,14 @@ public class InsertarGato extends javax.swing.JFrame {
         // PARSEO Y ASIGNACIÓN
         gatoInser.setId(0);// DA IGUAL PQ ES AUTOINCREMENT
         gatoInser.setNombre(inserNombre.getText());
-        gatoInser.setRaza(inserNombre.getText());
+        gatoInser.setRaza(inserRaza.getText());
         gatoInser.setEdad(Integer.parseInt(inserEdad.getText()));
 
         // AL METER UN GATO LO HACE SOLO O TENGO QUE IR AL ATRIBUTO LISTA DE LA CAFETERIA Y AÑADIRLO?
         Integer idCafeteria = Integer.valueOf(inserCafeteria.getText());
-        Cafeteria cafeteria = controlador.cafetPorId(idCafeteria);
+        CafeteriaJpaController contrCaf = new CafeteriaJpaController();
+        Cafeteria cafeteria = contrCaf.findCafeteria(idCafeteria);
+//        Cafeteria cafeteria = controlador.cafetPorId(idCafeteria);
         gatoInser.setIdCafeteria(cafeteria);
 
         // DA EL MISMO ERROR QUE AL AÑADIR UNA CAFETERIA
@@ -193,10 +189,10 @@ public class InsertarGato extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Anyadir;
     private javax.swing.JButton Volver;
-    private javax.swing.JTextField inserApellidos;
     private javax.swing.JTextField inserCafeteria;
     private javax.swing.JTextField inserEdad;
     private javax.swing.JTextField inserNombre;
+    private javax.swing.JTextField inserRaza;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

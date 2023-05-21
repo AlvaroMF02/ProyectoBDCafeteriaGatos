@@ -56,7 +56,7 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="inserApellidos" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                      <Component id="inserRaza" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
                                       <Component id="inserNombre" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
                                       <Component id="inserEdad" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
                                   </Group>
@@ -99,7 +99,7 @@
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="inserApellidos" min="-2" max="-2" attributes="0"/>
+                          <Component id="inserRaza" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="inserEdad" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -176,7 +176,7 @@
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="inserApellidos">
+        <Component class="javax.swing.JTextField" name="inserRaza">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
