@@ -295,26 +295,26 @@ public class PrincCafeterias extends javax.swing.JFrame {
     }//GEN-LAST:event_EliminarCafeteriaActionPerformed
 
     private void EditarCafeteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarCafeteriaActionPerformed
-//        String codigo = "";
-//
-//        // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
-//        if (tablaFacturas.getRowCount() > 0) {
-//            // SI ESTA SELECCIONADO
-//            if (tablaFacturas.getSelectedRow() != -1) {
-//
-//                // FILA SELECCIONADA COLUMNA 0
-//                codigo = String.valueOf(tablaFacturas.getValueAt(tablaFacturas.getSelectedRow(), 0));
-//
-//                EditarFactura consultaFactura = new EditarFactura(codigo);
-//                consultaFactura.setVisible(true);
-//                consultaFactura.setLocationRelativeTo(null);
-//
-//            } else {
-//                JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
-//        }
+        Integer codigo;
+
+        // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
+        if (tablaCafeterias.getRowCount() > 0) {
+            // SI ESTA SELECCIONADO
+            if (tablaCafeterias.getSelectedRow() != -1) {
+
+                // FILA SELECCIONADA COLUMNA 0
+                codigo = Integer.valueOf(String.valueOf(tablaCafeterias.getValueAt(tablaCafeterias.getSelectedRow(), 0)));
+
+                EditarCafeteria consultaCafe = new EditarCafeteria(codigo);
+                consultaCafe.setVisible(true);
+                consultaCafe.setLocationRelativeTo(null);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
+        }
 
     }//GEN-LAST:event_EditarCafeteriaActionPerformed
 
@@ -336,7 +336,7 @@ public class PrincCafeterias extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "### Cafeteria Buscado ###\n\n"
                     + "Id: " + cafeteriaBuscar.getId() + "\n"
                     + "Nombre: " + cafeteriaBuscar.getNombre() + "\n"
-                    + "Fecha Apertura: " + cafeteriaBuscar.getFecApertLocalDate()+ "\n"
+                    + "Fecha Apertura: " + cafeteriaBuscar.getFecApertLocalDate() + "\n"
                     + "Coste Mensual: " + cafeteriaBuscar.getCostePedidoMensu() + "\n"
                     + "Encargado: " + cafeteriaBuscar.getIdEncargado() + "\n");
 

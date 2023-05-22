@@ -1,7 +1,6 @@
 package applycation;
 
 import controllers.Controlador;
-import controllers.EncargadoJpaController;
 import entities.Encargado;
 import entities.Gato;
 import javax.swing.JOptionPane;
@@ -33,7 +32,7 @@ public class EditarGato extends javax.swing.JFrame {
         editEdad.setText(String.valueOf(gato.getEdad()));
         
         // BUSCAR LA CAFETERIA EN LA QUE ESTA EL GATO Y PONERLA AHI
-        editCafeteria.setText(String.valueOf(gato.setIdCafeteria(idCafeteria)));
+        //editCafeteria.setText(String.valueOf(gato.setIdCafeteria(idCafeteria)));
 
         this.id = id;
 
@@ -162,9 +161,9 @@ public class EditarGato extends javax.swing.JFrame {
                             .addComponent(editEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(editCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(editCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Editar)

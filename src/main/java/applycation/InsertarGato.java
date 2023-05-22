@@ -66,6 +66,11 @@ public class InsertarGato extends javax.swing.JFrame {
         inserEdad.setToolTipText("");
 
         Volver.setText("Volver");
+        Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverActionPerformed(evt);
+            }
+        });
 
         Anyadir.setText("Añadir");
         Anyadir.addActionListener(new java.awt.event.ActionListener() {
@@ -184,6 +189,11 @@ public class InsertarGato extends javax.swing.JFrame {
         // ACTUALIZA LA TABLA
         //PrincEncargado.cargarTabla();
     }//GEN-LAST:event_AnyadirActionPerformed
+
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+       // "CIERRA" LA VENTANA
+       this.dispose();
+    }//GEN-LAST:event_VolverActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

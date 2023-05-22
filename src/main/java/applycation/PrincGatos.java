@@ -301,9 +301,9 @@ public class PrincGatos extends javax.swing.JFrame {
                 // FILA x SELECCIONADA COLUMNA 0
                 id = Integer.valueOf(String.valueOf(tablaGatos.getValueAt(tablaGatos.getSelectedRow(), 0)));
 
-                EditarGato consultaFactura = new EditarGato(id);
-                consultaFactura.setVisible(true);
-                consultaFactura.setLocationRelativeTo(null);
+                EditarGato consultaGat = new EditarGato(id);
+                consultaGat.setVisible(true);
+                consultaGat.setLocationRelativeTo(null);
 
             } else {
                 JOptionPane.showMessageDialog(null, "No ha seleccionado nada");

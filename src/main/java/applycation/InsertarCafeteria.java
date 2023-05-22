@@ -84,6 +84,11 @@ public class InsertarCafeteria extends javax.swing.JFrame {
         jLabel8.setText("año/mes/dia");
 
         Volver.setText("Volver");
+        Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverActionPerformed(evt);
+            }
+        });
 
         Anyadir.setText("Añadir");
         Anyadir.addActionListener(new java.awt.event.ActionListener() {
@@ -198,11 +203,6 @@ public class InsertarCafeteria extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No se ha introducido bien la fecha");
         }
 
-        // BUSQUEDA DE UN ENCARGADO PARA PONERLO EN LA CAFETERIA
-        // DA ERROR DICIENDO QUE EL BUSCADOR NO ENCUENTRA AL ENCARGADO, PERO LUEGO AL
-        // BUSCARLO SI FUNCIONA NS
-        // AL HACER LA BUSQUEDA CON EL METODO DE JPA SI ME FUNCIONA
-        // ¿POR QUE NO FUNCIONA CON EL OTRO?
         EncargadoJpaController controlEnca = new EncargadoJpaController();
         Encargado encargado = controlEnca.findEncargado(idEncarfado);
 //        Encargado encargado = controlador.encargPorId(idEncarfado);
@@ -221,6 +221,11 @@ public class InsertarCafeteria extends javax.swing.JFrame {
         // ACTUALIZA LA TABLA
         //PrincEncargado.cargarTabla();
     }//GEN-LAST:event_AnyadirActionPerformed
+
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+        // "CIERRA" LA VENTANA
+        this.dispose();
+    }//GEN-LAST:event_VolverActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
