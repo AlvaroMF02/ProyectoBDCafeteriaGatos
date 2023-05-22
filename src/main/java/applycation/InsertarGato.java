@@ -4,6 +4,7 @@ import controllers.CafeteriaJpaController;
 import controllers.Controlador;
 import entities.Cafeteria;
 import entities.Gato;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -165,34 +166,42 @@ public class InsertarGato extends javax.swing.JFrame {
 
     private void AnyadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnyadirActionPerformed
 
+        List<Cafeteria> cafeterias = controlador.obtenerCafeterias();
         Gato gatoInser = new Gato();
+        Integer idCafeteria = 999999;   // PARA QUE SALTE EL ERROR SI NO SE HA ESCRITO NADA
 
         // PARSEO Y ASIGNACIÓN
-        gatoInser.setId(0);// DA IGUAL PQ ES AUTOINCREMENT
-        gatoInser.setNombre(inserNombre.getText());
-        gatoInser.setRaza(inserRaza.getText());
-        gatoInser.setEdad(Integer.parseInt(inserEdad.getText()));
+        try {
+            gatoInser.setId(0);// DA IGUAL PQ ES AUTOINCREMENT
+            gatoInser.setNombre(inserNombre.getText());
+            gatoInser.setRaza(inserRaza.getText());
+            gatoInser.setEdad(Integer.parseInt(inserEdad.getText()));
+            idCafeteria = Integer.valueOf(inserCafeteria.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Escriba bien los valores");
+        }
 
-        // AL METER UN GATO LO HACE SOLO O TENGO QUE IR AL ATRIBUTO LISTA DE LA CAFETERIA Y AÑADIRLO?
-        Integer idCafeteria = Integer.valueOf(inserCafeteria.getText());
-        CafeteriaJpaController contrCaf = new CafeteriaJpaController();
-        Cafeteria cafeteria = contrCaf.findCafeteria(idCafeteria);
-//        Cafeteria cafeteria = controlador.cafetPorId(idCafeteria);
-        gatoInser.setIdCafeteria(cafeteria);
+        // SI EL ID DE LA CAFETERIA NO ESTA EN EL RANGO NO CREA AL GATO
+        if (idCafeteria < 1 || idCafeteria > cafeterias.size()) {
+            JOptionPane.showMessageDialog(null, "Esa cafeteria no existe");
+        } else {
+            Cafeteria cafeteria = controlador.cafetPorId(idCafeteria);
+            gatoInser.setIdCafeteria(cafeteria);
 
-        // DA EL MISMO ERROR QUE AL AÑADIR UNA CAFETERIA
-        controlador.crearGato(gatoInser);
+            // DA EL MISMO ERROR QUE AL AÑADIR UNA CAFETERIA
+            controlador.crearGato(gatoInser);
 
-        // "CIERRA" LA VENTANA
+            this.dispose();
+        }
+
         this.dispose();
 
-        // ACTUALIZA LA TABLA
-        //PrincEncargado.cargarTabla();
+
     }//GEN-LAST:event_AnyadirActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
-       // "CIERRA" LA VENTANA
-       this.dispose();
+        // "CIERRA" LA VENTANA
+        this.dispose();
     }//GEN-LAST:event_VolverActionPerformed
 
 
