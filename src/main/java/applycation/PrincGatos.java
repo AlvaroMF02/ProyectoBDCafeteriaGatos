@@ -1,6 +1,8 @@
 package applycation;
 
 import controllers.Controlador;
+import controllers.exceptions.IllegalOrphanException;
+import controllers.exceptions.NonexistentEntityException;
 import entities.Gato;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -265,29 +267,31 @@ public class PrincGatos extends javax.swing.JFrame {
     }//GEN-LAST:event_VolverActionPerformed
 
     private void EliminarGatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarGatoActionPerformed
-        //        String codigo = "";
-        //        // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
-        //        if (tablaFacturas.getRowCount() > 0) {
-        //            // SI ESTA SELECCIONADO
-        //            if (tablaFacturas.getSelectedRow() != -1) {
-        //                // FILA SELECCIONADA COLUMNA 0
-        //                codigo = String.valueOf(tablaFacturas.getValueAt(tablaFacturas.getSelectedRow(), 0));
-        //
-        //                // METODO JPA PARA ELIMINAR
-        //                try {
-        //                    controlador.destroy(codigo);
-        //                } catch (NonexistentEntityException ex) {
-        //                }
-        //
-        //                JOptionPane.showMessageDialog(null, "Factura borrada correctamente");
-        //                cargarTabla();
-        //
-        //            } else {
-        //                JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
-        //            }
-        //        } else {
-        //            JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
-        //        }
+        Integer id;
+        
+        // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
+        if (tablaGatos.getRowCount() > 0) {
+            // SI ESTA SELECCIONADO
+            if (tablaGatos.getSelectedRow() != -1) {
+                // FILA SELECCIONADA COLUMNA 0
+                id = Integer.valueOf(String.valueOf(tablaGatos.getValueAt(tablaGatos.getSelectedRow(), 0)));
+
+                // METODO JPA PARA ELIMINAR
+                try {
+                    controlador.eliminarEncargado(id);
+                } catch (NonexistentEntityException ex) {
+                } catch (IllegalOrphanException ex) {
+                    JOptionPane.showMessageDialog(null, "No se puede eliminar a este gato");
+                }
+
+                cargarTabla();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
+        }
     }//GEN-LAST:event_EliminarGatoActionPerformed
 
     private void EditarGatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarGatoActionPerformed

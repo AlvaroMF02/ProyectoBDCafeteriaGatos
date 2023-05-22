@@ -1,6 +1,8 @@
 package applycation;
 
 import controllers.Controlador;
+import controllers.exceptions.IllegalOrphanException;
+import controllers.exceptions.NonexistentEntityException;
 import entities.Cafeteria;
 import entities.Encargado;
 import java.util.List;
@@ -268,29 +270,31 @@ public class PrincCafeterias extends javax.swing.JFrame {
     }//GEN-LAST:event_ActualizarActionPerformed
 
     private void EliminarCafeteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarCafeteriaActionPerformed
-//        String codigo = "";
-//        // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
-//        if (tablaFacturas.getRowCount() > 0) {
-//            // SI ESTA SELECCIONADO
-//            if (tablaFacturas.getSelectedRow() != -1) {
-//                // FILA SELECCIONADA COLUMNA 0
-//                codigo = String.valueOf(tablaFacturas.getValueAt(tablaFacturas.getSelectedRow(), 0));
-//
-//                // METODO JPA PARA ELIMINAR
-//                try {
-//                    controlador.destroy(codigo);
-//                } catch (NonexistentEntityException ex) {
-//                }
-//
-//                JOptionPane.showMessageDialog(null, "Factura borrada correctamente");
-//                cargarTabla();
-//
-//            } else {
-//                JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
-//        }
+        Integer id;
+        
+        // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
+        if (tablaCafeterias.getRowCount() > 0) {
+            // SI ESTA SELECCIONADO
+            if (tablaCafeterias.getSelectedRow() != -1) {
+                // FILA SELECCIONADA COLUMNA 0
+                id = Integer.valueOf(String.valueOf(tablaCafeterias.getValueAt(tablaCafeterias.getSelectedRow(), 0)));
+
+                // METODO JPA PARA ELIMINAR
+                try {
+                    controlador.eliminarEncargado(id);
+                } catch (NonexistentEntityException ex) {
+                } catch (IllegalOrphanException ex) {
+                    JOptionPane.showMessageDialog(null, "No se puede eliminar a esta cafeteria");
+                }
+
+                cargarTabla();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
+        }
 
     }//GEN-LAST:event_EliminarCafeteriaActionPerformed
 
