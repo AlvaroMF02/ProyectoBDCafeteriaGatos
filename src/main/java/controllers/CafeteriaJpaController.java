@@ -10,6 +10,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import entities.Encargado;
 import entities.Gato;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -206,30 +207,36 @@ public class CafeteriaJpaController implements Serializable {
         }
     }
 
-    // METODOS DE BUSQUEDA POR NOMBRE POR LAS NAMED QUERY
+    // METODOS AÑADIDOS DE BUSQUEDA POR NOMBRE POR LAS NAMED QUERY
     // Cafeteria.findByNombre
-//    public static Cafeteria buscCafetNombre(String nombre) {
-//        Cafeteria cafetBuscada = new Cafeteria();
-//        // METER EL COSO ESE
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("proyectoBDAlvaro");
-//        EntityManager em = emf.createEntityManager();
-//        Query q = em.createNamedQuery("Cafeteria.findByNombre");
-//        q.setParameter(1, nombre);
-//        List a = q.getResultList();
-//        
-//        a.forEach(System.out::println);
-//        
-//        return cafetBuscada;
-//    }
+    public Cafeteria buscCafetPorNombre(String nombre) {
+        EntityManager em = getEntityManager();
+        
+        // CREAR LA QUERY CON EL ENTITY MANAGER
+        Query q = em.createNamedQuery("Cafeteria.findByNombre");
+        
+        // BUSCAMOS EL NOMBRE
+        q.setParameter("nombre", nombre);
+        
+        // CASTING
+        return (Cafeteria)q.getSingleResult();
+        
+    }
 
-    // METODOS DE BUSQUEDA POR COSTE DE PEDIDO POR LAS NAMED QUERY
+    // METODOS AÑADIDOS DE BUSQUEDA POR COSTE DE PEDIDO POR LAS NAMED QUERY
     // Cafeteria.findByCostePedidoMensu
-//    public static Cafeteria buscCafetCostePedidos(String nombre) {
-//        Cafeteria cafetBuscada = new Cafeteria();
-//        // METER EL COSO ESE
-//
-//        return cafetBuscada;
-//    }
+    public Cafeteria buscCafetPorCostePedidos(BigDecimal coste) {
+        EntityManager em = getEntityManager();
+        
+        // CREAR LA QUERY CON EL ENTITY MANAGER
+        Query q = em.createNamedQuery("Cafeteria.findByCostePedidoMensu");
+        
+        // BUSCAMOS EL NOMBRE
+        q.setParameter("costePedidoMensu", coste);
+        
+        // CASTING
+        return (Cafeteria)q.getSingleResult();
+    }
 
     public List<Cafeteria> findCafeteriaEntities() {
         return findCafeteriaEntities(true, -1, -1);

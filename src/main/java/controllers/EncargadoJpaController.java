@@ -188,5 +188,36 @@ public class EncargadoJpaController implements Serializable {
             em.close();
         }
     }
+    
+    // METODOS AÑADIDOS DE BUSQUEDA POR NOMBRE POR LAS NAMED QUERY
+    // Encargado.findByNombre
+    public Encargado buscEncargadoPorNombre(String nombre) {
+        EntityManager em = getEntityManager();
+        
+        // CREAR LA QUERY CON EL ENTITY MANAGER
+        Query q = em.createNamedQuery("Encargado.findByNombre");
+        
+        // BUSCAMOS EL NOMBRE
+        q.setParameter("nombre", nombre);
+        
+        // CASTING
+        return (Encargado)q.getSingleResult();
+        
+    }
+
+    // METODOS AÑADIDOS DE BUSQUEDA POR EDAD CON LAS NAMED QUERY
+    // Encargado.findByEdad
+    public Encargado buscEncargadoPorEdad(Integer edad) {
+        EntityManager em = getEntityManager();
+        
+        // CREAR LA QUERY CON EL ENTITY MANAGER
+        Query q = em.createNamedQuery("Encargado.findByEdad");
+        
+        // BUSCAMOS EL NOMBRE
+        q.setParameter("edad", edad);
+        
+        // CASTING
+        return (Encargado)q.getSingleResult();
+    }
 
 }

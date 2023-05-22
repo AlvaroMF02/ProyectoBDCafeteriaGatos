@@ -165,5 +165,36 @@ public class GatoJpaController implements Serializable {
             em.close();
         }
     }
+    
+    // METODOS AÑADIDOS DE BUSQUEDA POR NOMBRE POR LAS NAMED QUERY
+    // Gato.findByNombre
+    public Gato buscEncargadoPorNombre(String nombre) {
+        EntityManager em = getEntityManager();
+        
+        // CREAR LA QUERY CON EL ENTITY MANAGER
+        Query q = em.createNamedQuery("Gato.findByNombre");
+        
+        // BUSCAMOS EL NOMBRE
+        q.setParameter("nombre", nombre);
+        
+        // CASTING
+        return (Gato)q.getSingleResult();
+        
+    }
+
+    // METODOS AÑADIDOS DE BUSQUEDA POR LA RAZA CON LAS NAMED QUERY
+    // Gato.findByRaza
+    public Gato buscEncargadoPorEdad(String raza) {
+        EntityManager em = getEntityManager();
+        
+        // CREAR LA QUERY CON EL ENTITY MANAGER
+        Query q = em.createNamedQuery("Gato.findByRaza");
+        
+        // BUSCAMOS EL NOMBRE
+        q.setParameter("raza", raza);
+        
+        // CASTING
+        return (Gato)q.getSingleResult();
+    }
 
 }

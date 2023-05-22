@@ -195,9 +195,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_CopiaSeguridadActionPerformed
 
     /*
-    Para restaurar una copia, 
-    el sistema debe listar las posibles copias existentes en el programa, eligiendo 
-    el usuario la copia a volcar. El programa borrará todas las tuplas de todas las 
+    El programa borrará todas las tuplas de todas las 
     tablas y procederá a guardar los datos que haya en los archivos de backup, dejando 
     el sistema en el mismo estado que reflejan los archivos.
      */
