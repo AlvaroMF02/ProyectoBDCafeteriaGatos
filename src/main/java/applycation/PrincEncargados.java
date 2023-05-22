@@ -1,8 +1,12 @@
 package applycation;
 
 import controllers.Controlador;
+import controllers.exceptions.IllegalOrphanException;
+import controllers.exceptions.NonexistentEntityException;
 import entities.Encargado;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -325,29 +329,31 @@ public class PrincEncargados extends javax.swing.JFrame {
     }//GEN-LAST:event_EditarEncargadoActionPerformed
 
     private void EliminarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarEncargadoActionPerformed
-        //        String codigo = "";
-        //        // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
-        //        if (tablaFacturas.getRowCount() > 0) {
-        //            // SI ESTA SELECCIONADO
-        //            if (tablaFacturas.getSelectedRow() != -1) {
-        //                // FILA SELECCIONADA COLUMNA 0
-        //                codigo = String.valueOf(tablaFacturas.getValueAt(tablaFacturas.getSelectedRow(), 0));
-        //
-        //                // METODO JPA PARA ELIMINAR
-        //                try {
-        //                    controlador.destroy(codigo);
-        //                } catch (NonexistentEntityException ex) {
-        //                }
-        //
-        //                JOptionPane.showMessageDialog(null, "Factura borrada correctamente");
-        //                cargarTabla();
-        //
-        //            } else {
-        //                JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
-        //            }
-        //        } else {
-        //            JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
-        //        }
+        Integer id;
+        
+        // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
+        if (tablaEncargados.getRowCount() > 0) {
+            // SI ESTA SELECCIONADO
+            if (tablaEncargados.getSelectedRow() != -1) {
+                // FILA SELECCIONADA COLUMNA 0
+                id = Integer.valueOf(String.valueOf(tablaEncargados.getValueAt(tablaEncargados.getSelectedRow(), 0)));
+
+                // METODO JPA PARA ELIMINAR
+                try {
+                    controlador.eliminarEncargado(id);
+                } catch (NonexistentEntityException ex) {
+                } catch (IllegalOrphanException ex) {
+                    JOptionPane.showMessageDialog(null, "No se puede eliminar a este encargado");
+                }
+
+                cargarTabla();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
+        }
     }//GEN-LAST:event_EliminarEncargadoActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed

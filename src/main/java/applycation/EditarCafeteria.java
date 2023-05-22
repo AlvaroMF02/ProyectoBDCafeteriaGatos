@@ -1,15 +1,10 @@
 package applycation;
 
 import controllers.Controlador;
-import controllers.EncargadoJpaController;
 import entities.Cafeteria;
-import entities.Encargado;
-import entities.Gato;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
