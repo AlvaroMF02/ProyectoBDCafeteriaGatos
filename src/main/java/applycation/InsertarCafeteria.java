@@ -81,7 +81,7 @@ public class InsertarCafeteria extends javax.swing.JFrame {
         inserEncargado.setToolTipText("");
 
         jLabel8.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel8.setText("año/mes/dia");
+        jLabel8.setText("año-mes-dia");
 
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
@@ -195,7 +195,7 @@ public class InsertarCafeteria extends javax.swing.JFrame {
         cafeteriaInser.setGatoList(listaVacia);
 
         // PARSEAR LA FECHA PARA DATE
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); // CAMBIO DE / A -
         try {
             cafeteriaInser.setFecApert(formato.parse(inserFech.getText()));
         } catch (ParseException ex) {
