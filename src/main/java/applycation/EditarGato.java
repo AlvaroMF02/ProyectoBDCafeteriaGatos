@@ -1,7 +1,6 @@
 package applycation;
 
 import controllers.Controlador;
-import entities.Encargado;
 import entities.Gato;
 import javax.swing.JOptionPane;
 
@@ -186,14 +185,14 @@ public class EditarGato extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
-        Encargado encargEdit = new Encargado();
+        Gato gatEdit = controlador.gatoPorId(id);
 
         // PARSEO Y ASIGNACIÓN
-        encargEdit.setId(id);
+        gatEdit.setId(id);
         try {
-            encargEdit.setNombre(editNombre.getText());
-            encargEdit.setApellidos(editRaza.getText());
-            encargEdit.setEdad(Integer.parseInt(editEdad.getText()));
+            gatEdit.setNombre(editNombre.getText());
+            gatEdit.setRaza(editRaza.getText());
+            gatEdit.setEdad(Integer.parseInt(editEdad.getText()));
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Solo se admiten números en la edad");
         }
@@ -201,7 +200,7 @@ public class EditarGato extends javax.swing.JFrame {
         // NO EDITA A LOS QUE ESTÁN ASIGNADOS A UNA CAFETERIA
         try {
             // EDITAR LA FACTURA
-            controlador.editarEncargado(encargEdit);
+            controlador.editarGato(gatEdit);
         } catch (Exception ex) {
             //JPANEL NO SE HA PODIDO EDITAR
             JOptionPane.showMessageDialog(null, "No se ha podido editar");

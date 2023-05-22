@@ -5,6 +5,9 @@ import controllers.EncargadoJpaController;
 import entities.Cafeteria;
 import entities.Encargado;
 import entities.Gato;
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -34,7 +37,7 @@ public class EditarCafeteria extends javax.swing.JFrame {
         editFecha.setText(caf.getFecApertLocalDate().toString());
         editCosteMens.setText(caf.getCostePedidoMensu().toString());
         editEncargado.setText(caf.getIdEncargado().getId().toString());
-        
+
         this.id = codigo;
 
     }
@@ -55,6 +58,7 @@ public class EditarCafeteria extends javax.swing.JFrame {
         Volver = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         editEncargado = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,6 +111,9 @@ public class EditarCafeteria extends javax.swing.JFrame {
         editEncargado.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         editEncargado.setToolTipText("");
 
+        jLabel8.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel8.setText("año/mes/dia");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -125,7 +132,10 @@ public class EditarCafeteria extends javax.swing.JFrame {
                             .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(editFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(editFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel8))
                             .addComponent(editNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(editEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(editCosteMens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,7 +158,8 @@ public class EditarCafeteria extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(editFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -181,22 +192,30 @@ public class EditarCafeteria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
-        Encargado encargEdit = new Encargado();
+        Cafeteria cafe = controlador.cafetPorId(id);
 
         // PARSEO Y ASIGNACIÓN
-        encargEdit.setId(id);
+        cafe.setId(id);
+        
+        cafe.setNombre(editNombre.getText());
+        cafe.setCostePedidoMensu(BigDecimal.valueOf(Double.parseDouble(editCosteMens.getText())));
+        
+        // PARSEAR LA FECHA PARA DATE
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            encargEdit.setNombre(editNombre.getText());
-            encargEdit.setApellidos(editFecha.getText());
-            encargEdit.setEdad(Integer.parseInt(editCosteMens.getText()));
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Solo se admiten números en la edad");
+            cafe.setFecApert(formato.parse(editFecha.getText()));
+        } catch (ParseException ex) {
+            //JPANEL NO SE HA ESCRITO BIEN LA FECHA
+            JOptionPane.showMessageDialog(null, "No se ha introducido bien la fecha");
         }
+        
+        // PONER ENCARGADO AL EDITAR
+        cafe.setIdEncargado(controlador.encargPorId(Integer.valueOf(editEncargado.getText())));
 
         // NO EDITA A LOS QUE ESTÁN ASIGNADOS A UNA CAFETERIA
         try {
             // EDITAR LA FACTURA
-            controlador.editarEncargado(encargEdit);
+            controlador.editarCafeteria(cafe);
         } catch (Exception ex) {
             //JPANEL NO SE HA PODIDO EDITAR
             JOptionPane.showMessageDialog(null, "No se ha podido editar");
@@ -226,6 +245,7 @@ public class EditarCafeteria extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

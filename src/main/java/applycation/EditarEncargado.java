@@ -22,9 +22,7 @@ public class EditarEncargado extends javax.swing.JFrame {
     public EditarEncargado(Integer codigo) {
         initComponents();
 
-        // UTILIZANDO EL CONTROLADOR JPA SIN USAR LA CLASE CONTROL NO DA ERROR
-        EncargadoJpaController control = new EncargadoJpaController();
-        Encargado encarg = control.findEncargado(codigo);
+        Encargado encarg = controlador.encargPorId(id);
 
         // PASAR LOS ATRIBUTOS A TEXTO PARA LA EDICION
         editNombre.setText(encarg.getNombre());
@@ -165,8 +163,8 @@ public class EditarEncargado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
-        Encargado encargEdit = new Encargado();
-
+        Encargado encargEdit = controlador.encargPorId(id);
+        
         // PARSEO Y ASIGNACIÓN
         encargEdit.setId(id);
         try {
@@ -184,6 +182,7 @@ public class EditarEncargado extends javax.swing.JFrame {
         } catch (Exception ex) {
             //JPANEL NO SE HA PODIDO EDITAR
             JOptionPane.showMessageDialog(null, "No se ha podido editar");
+            
         }
 
         // "CIERRA" LA VENTANA
