@@ -1,7 +1,9 @@
 package applycation;
 
 import controllers.Controlador;
+import entities.Cafeteria;
 import entities.Gato;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,16 +24,13 @@ public class EditarGato extends javax.swing.JFrame {
         initComponents();
 
         // UTILIZANDO EL CONTROLADOR JPA SIN USAR LA CLASE CONTROL NO DA ERROR
-
         Gato gato = controlador.gatoPorId(id);
 
         // PASAR LOS ATRIBUTOS A TEXTO PARA LA EDICION
         editNombre.setText(gato.getNombre());
         editRaza.setText(gato.getRaza());
         editEdad.setText(String.valueOf(gato.getEdad()));
-        
-        // BUSCAR LA CAFETERIA EN LA QUE ESTA EL GATO Y PONERLA AHI
-        //editCafeteria.setText(String.valueOf(gato.setIdCafeteria(idCafeteria)));
+        editCafeteria.setText(gato.getIdCafeteria().getId().toString());
 
         this.id = id;
 
@@ -186,6 +185,9 @@ public class EditarGato extends javax.swing.JFrame {
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
         Gato gatEdit = controlador.gatoPorId(id);
+        Cafeteria caf = new Cafeteria();
+
+        List<Cafeteria> cafeterias = controlador.obtenerCafeterias();
 
         // PARSEO Y ASIGNACIÓN
         gatEdit.setId(id);
@@ -193,20 +195,27 @@ public class EditarGato extends javax.swing.JFrame {
             gatEdit.setNombre(editNombre.getText());
             gatEdit.setRaza(editRaza.getText());
             gatEdit.setEdad(Integer.parseInt(editEdad.getText()));
+            // COMPROBAR QUE LA CAFETERIA QUE SE HA ESCRITO EXISTE
+            caf = controlador.cafetPorId(Integer.valueOf(editCafeteria.getText()));
+
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Solo se admiten números en la edad");
+            JOptionPane.showMessageDialog(null, "Valores mal introducidos");
         }
 
-        // NO EDITA A LOS QUE ESTÁN ASIGNADOS A UNA CAFETERIA
+        if (caf.getId() < 1 || caf.getId() > cafeterias.size()) {
+            JOptionPane.showMessageDialog(null, "Esa cafeteria no existe");
+        } else {
+            gatEdit.setIdCafeteria(caf);
+            this.dispose();
+        }
+
+        // EDICION
         try {
-            // EDITAR LA FACTURA
             controlador.editarGato(gatEdit);
         } catch (Exception ex) {
-            //JPANEL NO SE HA PODIDO EDITAR
             JOptionPane.showMessageDialog(null, "No se ha podido editar");
         }
 
-        // "CIERRA" LA VENTANA
         this.dispose();
 
     }//GEN-LAST:event_EditarActionPerformed
