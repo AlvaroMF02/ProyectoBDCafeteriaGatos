@@ -4,9 +4,12 @@ import controllers.CafeteriaJpaController;
 import controllers.Controlador;
 import controllers.EncargadoJpaController;
 import controllers.GatoJpaController;
+import entities.Encargado;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -236,7 +239,9 @@ public class RestaurarCopia extends javax.swing.JFrame {
         
                 
         
-        // BORRAR LAS TABLAS
+        // BORRAR LAS TABLAS CREANDO QUERIS
+        
+
         
         
     }
