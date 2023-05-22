@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
 public class Principal extends javax.swing.JFrame {
 
     private Controlador controlador = new Controlador();
-    
+
     public Principal() {
         initComponents();
     }
@@ -42,7 +42,7 @@ public class Principal extends javax.swing.JFrame {
         Encargados = new javax.swing.JButton();
         Gatos = new javax.swing.JButton();
         CopiaSeguridad = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        resturarCopias = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -101,7 +101,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Restaurar copias");
+        resturarCopias.setText("Restaurar copias");
+        resturarCopias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resturarCopiasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -124,7 +129,7 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(CopiaSeguridad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(234, 234, 234)
-                        .addComponent(jButton1)))
+                        .addComponent(resturarCopias)))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -140,11 +145,11 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(Encargados, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Gatos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(CopiaSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(resturarCopias)
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -196,7 +201,15 @@ public class Principal extends javax.swing.JFrame {
     tablas y procederá a guardar los datos que haya en los archivos de backup, dejando 
     el sistema en el mismo estado que reflejan los archivos.
      */
-    
+    private void resturarCopiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resturarCopiasActionPerformed
+        
+        RestaurarCopia rest = new RestaurarCopia();
+        rest.setVisible(true);
+        rest.setLocationRelativeTo(null);
+        rest.cargarTabla();
+        
+    }//GEN-LAST:event_resturarCopiasActionPerformed
+
     // CREACION DE LOS DIRECTORIOS PARA LA COPIA DE SEGURIDAD Y SUS FICHEROS
     private void copiaDeSeguridad() {
 
@@ -214,79 +227,80 @@ public class Principal extends javax.swing.JFrame {
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Problema creando el directorio " + ruta);
         }
-        
+
         // LISTAS PARA LA COPIA
         List<Cafeteria> listaCaf = controlador.obtenerCafeterias();
         List<Encargado> listaEnc = controlador.obtenerEncargados();
         List<Gato> listaGat = controlador.obtenerGatos();
-        
+
         // METODOS PARA PASAR A CSV Y HACER LAS COPIAS DE SEGURIDAD
         crearCopiaCafeterias(listaCaf, ruta);
         crearCopiaEncargados(listaEnc, ruta);
         crearCopiaGatos(listaGat, ruta);
     }
-    
+
     // CREACION DE LA COPIA CSV DE CAFETERIAS
-    private void crearCopiaCafeterias(List<Cafeteria> listaCaf, String ruta){
-        
+    private void crearCopiaCafeterias(List<Cafeteria> listaCaf, String ruta) {
+
         List<String> lista = new ArrayList<>();
-        
+
         for (int i = 0; i < listaCaf.size(); i++) {
             lista.add(listaCaf.get(i).toStringCopiaSeguridad());
         }
-        
+
         try {
-            Files.write(Paths.get("copias/" + ruta +"/Cafeterias.csv"), lista, StandardCharsets.ISO_8859_1,
-                    StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-        } catch (IOException ex) {
-            System.out.println("Error creando el fichero");
-        }
-    }
-    
-    // CREACION DE LA COPIA CSV DE ENCARGADOS
-    private void crearCopiaEncargados(List<Encargado> listaEnc, String ruta){
-        
-        List<String> lista = new ArrayList<>();
-        
-        for (int i = 0; i < listaEnc.size(); i++) {
-            lista.add(listaEnc.get(i).toStringCopiaSeguridad());
-        }
-        
-        try {
-            Files.write(Paths.get("copias/" + ruta +"/Encargados.csv"), lista, StandardCharsets.ISO_8859_1,
-                    StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-        } catch (IOException ex) {
-            System.out.println("Error creando el fichero");
-        }
-    }
-    
-    // CREACION DE LA COPIA CSV DE GATOS
-    private void crearCopiaGatos(List<Gato> listaGat, String ruta){
-        
-        List<String> lista = new ArrayList<>();
-        
-        for (int i = 0; i < listaGat.size(); i++) {
-            lista.add(listaGat.get(i).toStringCopiaSeguridad());
-        }
-        
-        try {
-            Files.write(Paths.get("copias/" + ruta +"/Gatos.csv"), lista, StandardCharsets.ISO_8859_1,
+            Files.write(Paths.get("copias/" + ruta + "/Cafeterias.csv"), lista, StandardCharsets.ISO_8859_1,
                     StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
         } catch (IOException ex) {
             System.out.println("Error creando el fichero");
         }
     }
 
+    // CREACION DE LA COPIA CSV DE ENCARGADOS
+    private void crearCopiaEncargados(List<Encargado> listaEnc, String ruta) {
+
+        List<String> lista = new ArrayList<>();
+
+        for (int i = 0; i < listaEnc.size(); i++) {
+            lista.add(listaEnc.get(i).toStringCopiaSeguridad());
+        }
+
+        try {
+            Files.write(Paths.get("copias/" + ruta + "/Encargados.csv"), lista, StandardCharsets.ISO_8859_1,
+                    StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+        } catch (IOException ex) {
+            System.out.println("Error creando el fichero");
+        }
+    }
+
+    // CREACION DE LA COPIA CSV DE GATOS
+    private void crearCopiaGatos(List<Gato> listaGat, String ruta) {
+
+        List<String> lista = new ArrayList<>();
+
+        for (int i = 0; i < listaGat.size(); i++) {
+            lista.add(listaGat.get(i).toStringCopiaSeguridad());
+        }
+
+        try {
+            Files.write(Paths.get("copias/" + ruta + "/Gatos.csv"), lista, StandardCharsets.ISO_8859_1,
+                    StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+        } catch (IOException ex) {
+            System.out.println("Error creando el fichero");
+        }
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cafeterias;
     private javax.swing.JButton CopiaSeguridad;
     private javax.swing.JButton Encargados;
     private javax.swing.JButton Gatos;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton resturarCopias;
     // End of variables declaration//GEN-END:variables
 
 }

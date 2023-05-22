@@ -103,7 +103,7 @@ public class MainConsola {
         // controlador.editarEncargado(encargadoEditado);
         encargados.forEach(System.out::println);
 
-        // ELIMINAR ENCARGADO (NO TIENEN RELACIÓN)                              CAMBIAR DATOS PARA QUE ACEPTE NULOS
+        // ELIMINAR ENCARGADO (NO TIENEN RELACIÓN)
         System.out.println("\n\n\n#### BORRADO DE UN ENCARGADO (10) ####");
         try {
             controlador.eliminarEncargado(10);
