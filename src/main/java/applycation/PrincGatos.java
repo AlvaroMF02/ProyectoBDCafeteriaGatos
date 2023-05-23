@@ -268,7 +268,7 @@ public class PrincGatos extends javax.swing.JFrame {
 
     private void EliminarGatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarGatoActionPerformed
         Integer id;
-        
+
         // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
         if (tablaGatos.getRowCount() > 0) {
             // SI ESTA SELECCIONADO

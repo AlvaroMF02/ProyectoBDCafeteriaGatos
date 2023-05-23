@@ -6,8 +6,6 @@ import controllers.exceptions.NonexistentEntityException;
 import entities.Cafeteria;
 import entities.Encargado;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -53,11 +51,16 @@ public class EliminarEncargado extends javax.swing.JFrame {
         jLabel2.setText("ELIMINAR ENCARGADO");
 
         jLabel1.setBackground(new java.awt.Color(187, 187, 187));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("¿Seguro qué deséa eliminar a este encargado?");
 
         jLabel3.setBackground(new java.awt.Color(187, 187, 187));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText(" Actualmente está trabajando en una cafeteria");
 
+        no.setBackground(new java.awt.Color(160, 126, 120));
+        no.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        no.setForeground(new java.awt.Color(41, 30, 28));
         no.setText("No");
         no.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +68,9 @@ public class EliminarEncargado extends javax.swing.JFrame {
             }
         });
 
+        si.setBackground(new java.awt.Color(160, 126, 120));
+        si.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        si.setForeground(new java.awt.Color(41, 30, 28));
         si.setText("Si");
         si.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,12 +136,12 @@ public class EliminarEncargado extends javax.swing.JFrame {
     private void siActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siActionPerformed
         List<Cafeteria> cafeterias = controlador.obtenerCafeterias();
         Encargado encarg = controlador.encargPorId(id);
-        
+
         // BUSCAR EN QUE CAFETERIA ESTÁ EL ENCARGADO
         for (int i = 0; i < cafeterias.size(); i++) {
-           
+
             if (encarg.equals(cafeterias.get(i).getIdEncargado())) {
-                
+
                 // PONERLO A NULL EN LA CAFETERIA
                 cafeterias.get(i).setIdEncargado(null);
                 // EDITAR LA CAFETERIA OCN LOS CAAMBIOS
@@ -144,7 +150,7 @@ public class EliminarEncargado extends javax.swing.JFrame {
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Error al editar la cafeteria");
                 }
-                
+
                 try {
                     // BORRAR AL ENCARGADO
                     controlador.eliminarEncargado(id);
@@ -152,9 +158,9 @@ public class EliminarEncargado extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "No se ha puesto a null");
                 }
             }
-            
+
         }
-        
+
     }//GEN-LAST:event_siActionPerformed
 
 

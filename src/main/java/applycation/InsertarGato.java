@@ -1,6 +1,5 @@
 package applycation;
 
-import controllers.CafeteriaJpaController;
 import controllers.Controlador;
 import entities.Cafeteria;
 import entities.Gato;

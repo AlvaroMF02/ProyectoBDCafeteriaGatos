@@ -193,7 +193,7 @@ public class EditarGato extends javax.swing.JFrame {
         gatEdit.setId(id);
         gatEdit.setNombre(editNombre.getText());
         gatEdit.setRaza(editRaza.getText());
-        
+
         // CATCH PARA EL BIG DECIMAL
         try {
             gatEdit.setEdad(Integer.parseInt(editEdad.getText()));
@@ -210,7 +210,7 @@ public class EditarGato extends javax.swing.JFrame {
             if (caf.getId() == null) {
                 JOptionPane.showMessageDialog(null, "La cafeteria no existe");
             }
-            
+
         }
 
         if (gatEdit.getId() != null) {

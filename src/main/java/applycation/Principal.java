@@ -200,12 +200,12 @@ public class Principal extends javax.swing.JFrame {
     el sistema en el mismo estado que reflejan los archivos.
      */
     private void resturarCopiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resturarCopiasActionPerformed
-        
+
         RestaurarCopia rest = new RestaurarCopia();
         rest.setVisible(true);
         rest.setLocationRelativeTo(null);
         rest.cargarTabla();
-        
+
     }//GEN-LAST:event_resturarCopiasActionPerformed
 
     // CREACION DE LOS DIRECTORIOS PARA LA COPIA DE SEGURIDAD Y SUS FICHEROS

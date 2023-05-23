@@ -154,13 +154,13 @@ public class InsertarEncargado extends javax.swing.JFrame {
         encarInser.setEdad(Integer.parseInt(inserEdad.getText()));
 
         controlador.crearEncargado(encarInser);
-        
+
         // "CIERRA" LA VENTANA
         this.dispose();
 
         // ACTUALIZA LA TABLA
         //PrincEncargado.cargarTabla();
-        
+
     }//GEN-LAST:event_AnyadirActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed

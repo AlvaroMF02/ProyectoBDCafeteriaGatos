@@ -5,8 +5,6 @@ import controllers.exceptions.IllegalOrphanException;
 import controllers.exceptions.NonexistentEntityException;
 import entities.Encargado;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -330,7 +328,7 @@ public class PrincEncargados extends javax.swing.JFrame {
 
     private void EliminarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarEncargadoActionPerformed
         Integer id;
-        
+
         // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
         if (tablaEncargados.getRowCount() > 0) {
             // SI ESTA SELECCIONADO
@@ -343,12 +341,12 @@ public class PrincEncargados extends javax.swing.JFrame {
                     controlador.eliminarEncargado(id);
                 } catch (NonexistentEntityException ex) {
                 } catch (IllegalOrphanException ex) {
-                    
+
                     // JPANEL PARA PREGUNTAR SI QUIERES BORRAR AL POBRE ENCARGADO
                     EliminarEncargado elim = new EliminarEncargado(id);
                     elim.setVisible(true);
                     elim.setLocationRelativeTo(null);
-                    
+
                 }
 
                 cargarTabla();

@@ -180,7 +180,6 @@ public class InsertarCafeteria extends javax.swing.JFrame {
         Cafeteria cafeteriaInser = new Cafeteria();
         List<Gato> listaVacia = new ArrayList<>();
         Integer idEncarfado = 0;
-        
 
         // PARSEO Y ASIGNACIÓN
         cafeteriaInser.setId(0);// DA IGUAL PQ ES AUTOINCREMENT

@@ -4,12 +4,8 @@ import controllers.Controlador;
 import controllers.exceptions.IllegalOrphanException;
 import controllers.exceptions.NonexistentEntityException;
 import entities.Cafeteria;
-import entities.Encargado;
 import entities.Gato;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -290,7 +286,6 @@ public class PrincCafeterias extends javax.swing.JFrame {
                     Cafeteria cafe = controlador.cafetPorId(id);
 
                     // EDITAR LOS GATOS PARA QUE NO ESTÉN EN ESA CAFETERIA
-                    // SI SALE BIEN DARLE LA VUELTA
                     for (int i = 0; i < gatos.size(); i++) {
                         for (int j = 0; j < cafe.getGatoList().size(); j++) {
                             if (gatos.get(i).equals(cafe.getGatoList().get(j))) {

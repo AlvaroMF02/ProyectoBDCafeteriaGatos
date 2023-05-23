@@ -1,15 +1,9 @@
 package applycation;
 
-import controllers.CafeteriaJpaController;
 import controllers.Controlador;
-import controllers.EncargadoJpaController;
-import controllers.GatoJpaController;
-import entities.Encargado;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -150,7 +144,7 @@ public class RestaurarCopia extends javax.swing.JFrame {
 
         // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
         if (tablaRest.getRowCount() > 0) {
-            
+
             // SI ESTA SELECCIONADO
             if (tablaRest.getSelectedRow() != -1) {
 
@@ -163,7 +157,7 @@ public class RestaurarCopia extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
         }
-        
+
         // 
         restaurar(copia);
 
@@ -206,7 +200,6 @@ public class RestaurarCopia extends javax.swing.JFrame {
         } else {
             System.out.println("El directorio a listar no existe");
         }
-        
 
         // PARA QUE NO SE PUEDA EDITAR LA TABLA
         DefaultTableModel modeloTabla = new DefaultTableModel() {
@@ -233,16 +226,9 @@ public class RestaurarCopia extends javax.swing.JFrame {
 
         tablaRest.setModel(modeloTabla);
     }
-    
-    private static void restaurar(String ruta){
-        
-        
-                
-        
-        // BORRAR LAS TABLAS CREANDO QUERIS
-        
 
-        
-        
+    private static void restaurar(String ruta) {
+
+        // BORRAR LAS TABLAS CREANDO QUERIS
     }
 }
