@@ -7,8 +7,10 @@ import entities.Cafeteria;
 import entities.Encargado;
 import entities.Gato;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -159,17 +161,17 @@ public class RestaurarCopia extends javax.swing.JFrame {
                 copia = String.valueOf(tablaRest.getValueAt(tablaRest.getSelectedRow(), 0));
 
                 // BORRADO DE LAS TABLAS
-                try {
-                    borrado();
-                } catch (IllegalOrphanException ex) {
-                    Logger.getLogger(RestaurarCopia.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (NonexistentEntityException ex) {
-                    Logger.getLogger(RestaurarCopia.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (Exception ex) {
-                    Logger.getLogger(RestaurarCopia.class.getName()).log(Level.SEVERE, null, ex);
-                }
+//                try {
+//                    borrado();
+//                } catch (IllegalOrphanException ex) {
+//                    Logger.getLogger(RestaurarCopia.class.getName()).log(Level.SEVERE, null, ex);
+//                } catch (NonexistentEntityException ex) {
+//                    Logger.getLogger(RestaurarCopia.class.getName()).log(Level.SEVERE, null, ex);
+//                } catch (Exception ex) {
+//                    Logger.getLogger(RestaurarCopia.class.getName()).log(Level.SEVERE, null, ex);
+//                }
                 
-                lecturaFicheros(copia);
+                lecturaEInsercion(copia);
 
             } else {
                 JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
@@ -269,8 +271,30 @@ public class RestaurarCopia extends javax.swing.JFrame {
 
     }
 
-    private void lecturaFicheros(String ruta) {
-        // LEER LOS FICHEROS Y GUARDARLOS NS COMO
-        // METER LOS DATOS DE LOS FICHEROS A LA BD
+    private void lecturaEInsercion(String ruta) {
+        // LEER LOS FICHEROS Y HACER LAS INSERCIONES
+        // ENCARGADOS
+        String linea = "";
+        String[] tokens;
+        try (Scanner datosFichero = new Scanner(new File("copias/"+ruta+"/Encargados"), "ISO_8859_1")) {
+
+            while (datosFichero.hasNextLine()) {
+                
+                linea = datosFichero.nextLine();
+                
+                tokens = linea.split(";");
+                
+                for (String string : tokens) {
+                    System.out.print(string + "\t");
+                }
+                System.out.println();
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+        // CAFETERIAS
+        
+        // GATOS
+        
     }
 }
