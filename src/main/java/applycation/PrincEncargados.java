@@ -343,7 +343,12 @@ public class PrincEncargados extends javax.swing.JFrame {
                     controlador.eliminarEncargado(id);
                 } catch (NonexistentEntityException ex) {
                 } catch (IllegalOrphanException ex) {
-                    JOptionPane.showMessageDialog(null, "No se puede eliminar a este encargado");
+                    
+                    // JPANEL PARA PREGUNTAR SI QUIERES BORRAR AL POBRE ENCARGADO
+                    EliminarEncargado elim = new EliminarEncargado(id);
+                    elim.setVisible(true);
+                    elim.setLocationRelativeTo(null);
+                    
                 }
 
                 cargarTabla();
