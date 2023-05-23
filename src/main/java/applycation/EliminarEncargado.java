@@ -138,12 +138,18 @@ public class EliminarEncargado extends javax.swing.JFrame {
                 
                 // PONERLO A NULL EN LA CAFETERIA
                 cafeterias.get(i).setIdEncargado(null);
+                // EDITAR LA CAFETERIA OCN LOS CAAMBIOS
+                try {
+                    controlador.editarCafeteria(cafeterias.get(i));
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Error al editar la cafeteria");
+                }
                 
                 try {
                     // BORRAR AL ENCARGADO
                     controlador.eliminarEncargado(id);
                 } catch (IllegalOrphanException | NonexistentEntityException ex) {
-                    JOptionPane.showMessageDialog(null, "No s eha puesto a null");
+                    JOptionPane.showMessageDialog(null, "No se ha puesto a null");
                 }
             }
             
