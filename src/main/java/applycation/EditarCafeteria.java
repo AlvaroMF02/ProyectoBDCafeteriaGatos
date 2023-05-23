@@ -31,7 +31,10 @@ public class EditarCafeteria extends javax.swing.JFrame {
         editNombre.setText(caf.getNombre());
         editFecha.setText(caf.getFecApertLocalDate().toString());
         editCosteMens.setText(caf.getCostePedidoMensu().toString());
-        editEncargado.setText(caf.getIdEncargado().getId().toString());
+        try {
+            editEncargado.setText(caf.getIdEncargado().getId().toString());
+        } catch (NullPointerException e) {
+        }
 
         this.id = codigo;
 
@@ -191,10 +194,10 @@ public class EditarCafeteria extends javax.swing.JFrame {
 
         // PARSEO Y ASIGNACIÓN
         cafe.setId(id);
-        
+
         cafe.setNombre(editNombre.getText());
         cafe.setCostePedidoMensu(BigDecimal.valueOf(Double.parseDouble(editCosteMens.getText())));
-        
+
         // PARSEAR LA FECHA PARA DATE
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         try {
@@ -203,9 +206,13 @@ public class EditarCafeteria extends javax.swing.JFrame {
             //JPANEL NO SE HA ESCRITO BIEN LA FECHA
             JOptionPane.showMessageDialog(null, "No se ha introducido bien la fecha");
         }
-        
+
         // PONER ENCARGADO AL EDITAR
-        cafe.setIdEncargado(controlador.encargPorId(Integer.valueOf(editEncargado.getText())));
+        try {
+            cafe.setIdEncargado(controlador.encargPorId(Integer.valueOf(editEncargado.getText())));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar al encargado");
+        }
 
         // NO EDITA A LOS QUE ESTÁN ASIGNADOS A UNA CAFETERIA
         try {
@@ -213,7 +220,7 @@ public class EditarCafeteria extends javax.swing.JFrame {
             controlador.editarCafeteria(cafe);
         } catch (Exception ex) {
             //JPANEL NO SE HA PODIDO EDITAR
-            JOptionPane.showMessageDialog(null, "No se ha podido editar");
+            JOptionPane.showMessageDialog(null, "Ese trabajador está en otra cafeteria");
         }
 
         // "CIERRA" LA VENTANA
