@@ -5,7 +5,11 @@ import controllers.exceptions.IllegalOrphanException;
 import controllers.exceptions.NonexistentEntityException;
 import entities.Cafeteria;
 import entities.Encargado;
+import entities.Gato;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -271,6 +275,7 @@ public class PrincCafeterias extends javax.swing.JFrame {
 
     private void EliminarCafeteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarCafeteriaActionPerformed
         Integer id;
+        List<Gato>listaVacia= new ArrayList<>();
         
         // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
         if (tablaCafeterias.getRowCount() > 0) {
@@ -281,10 +286,19 @@ public class PrincCafeterias extends javax.swing.JFrame {
 
                 // METODO JPA PARA ELIMINAR
                 try {
-                    controlador.eliminarEncargado(id);
+                    // QUITAR TODOS LOS GATOS DE LA CAFETERIA
+                    Cafeteria cafe = controlador.cafetPorId(id);
+                    
+                    
+                    // EDITAR LOS GATOS PARA QUE NO ESTÉN EN ESA CAFETERIA
+                    
+                    
+                    controlador.eliminarCafeteria(cafe.getId());
                 } catch (NonexistentEntityException ex) {
                 } catch (IllegalOrphanException ex) {
-                    JOptionPane.showMessageDialog(null, "No se puede eliminar a esta cafeteria");
+                    JOptionPane.showMessageDialog(null, "No se puede eliminar porque hay gatos");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Error al poner la lista vacia de gatos");
                 }
 
                 cargarTabla();

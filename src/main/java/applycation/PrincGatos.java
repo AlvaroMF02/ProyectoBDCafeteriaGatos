@@ -278,7 +278,7 @@ public class PrincGatos extends javax.swing.JFrame {
 
                 // METODO JPA PARA ELIMINAR
                 try {
-                    controlador.eliminarEncargado(id);
+                    controlador.eliminarGato(id);
                 } catch (NonexistentEntityException ex) {
                 } catch (IllegalOrphanException ex) {
                     JOptionPane.showMessageDialog(null, "No se puede eliminar a este gato");
