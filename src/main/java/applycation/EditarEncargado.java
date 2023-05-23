@@ -1,7 +1,6 @@
 package applycation;
 
 import controllers.Controlador;
-import controllers.EncargadoJpaController;
 import entities.Encargado;
 import javax.swing.JOptionPane;
 
@@ -22,7 +21,13 @@ public class EditarEncargado extends javax.swing.JFrame {
     public EditarEncargado(Integer codigo) {
         initComponents();
 
-        Encargado encarg = controlador.encargPorId(id);
+        Encargado encarg = new Encargado();
+
+        try {
+            encarg = controlador.encargPorId(id);
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, "Los datos no se han podido cargar");
+        }
 
         // PASAR LOS ATRIBUTOS A TEXTO PARA LA EDICION
         editNombre.setText(encarg.getNombre());
@@ -164,7 +169,7 @@ public class EditarEncargado extends javax.swing.JFrame {
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
         Encargado encargEdit = controlador.encargPorId(id);
-        
+
         // PARSEO Y ASIGNACIÓN
         encargEdit.setId(id);
         try {
@@ -182,7 +187,7 @@ public class EditarEncargado extends javax.swing.JFrame {
         } catch (Exception ex) {
             //JPANEL NO SE HA PODIDO EDITAR
             JOptionPane.showMessageDialog(null, "No se ha podido editar");
-            
+
         }
 
         // "CIERRA" LA VENTANA
