@@ -1,9 +1,16 @@
 package applycation;
 
 import controllers.Controlador;
+import controllers.exceptions.IllegalOrphanException;
+import controllers.exceptions.NonexistentEntityException;
+import entities.Cafeteria;
+import entities.Encargado;
+import entities.Gato;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -140,7 +147,7 @@ public class RestaurarCopia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RestaurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RestaurarActionPerformed
-        String copia = "";
+        String copia;
 
         // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
         if (tablaRest.getRowCount() > 0) {
@@ -148,14 +155,22 @@ public class RestaurarCopia extends javax.swing.JFrame {
             // SI ESTA SELECCIONADO
             if (tablaRest.getSelectedRow() != -1) {
 
-                // FILA x SELECCIONADA COLUMNA 0
+                // COGER EL NOMBRE DE LA CARPETA
                 copia = String.valueOf(tablaRest.getValueAt(tablaRest.getSelectedRow(), 0));
 
-                // BORRAR TODAS LAS TABLAS 
-                // LEER LOS FICHEROS Y GUARDARLOS NS COMO
-                // METER LOS DATOS DE LOS FICHEROS A LA BD
+                // BORRADO DE LAS TABLAS
+                try {
+                    borrado();
+                } catch (IllegalOrphanException ex) {
+                    Logger.getLogger(RestaurarCopia.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NonexistentEntityException ex) {
+                    Logger.getLogger(RestaurarCopia.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(RestaurarCopia.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
-                
+                lecturaFicheros(copia);
+
             } else {
                 JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
             }
@@ -163,8 +178,6 @@ public class RestaurarCopia extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
         }
 
-        // 
-        restaurar(copia);
 
     }//GEN-LAST:event_RestaurarActionPerformed
 
@@ -232,8 +245,32 @@ public class RestaurarCopia extends javax.swing.JFrame {
         tablaRest.setModel(modeloTabla);
     }
 
-    private static void restaurar(String ruta) {
+    private void borrado() throws IllegalOrphanException, NonexistentEntityException, Exception {
+        // BORRAR TODAS LAS TABLAS 
+        // 1-GATOS
+        List<Gato> gatos = controlador.obtenerGatos();
+        for (int i = 0; i < gatos.size(); i++) {
+            controlador.eliminarGato(gatos.get(i).getId());
+        }
 
-        // BORRAR LAS TABLAS CREANDO QUERIS
+        // 2-CAFETERIAS
+        List<Cafeteria> cafes = controlador.obtenerCafeterias();
+        for (int i = 0; i < cafes.size(); i++) {
+            cafes.get(i).setIdEncargado(null);
+            controlador.editarCafeteria(cafes.get(i));
+            controlador.eliminarCafeteria(cafes.get(i).getId());
+        }
+
+        // 3-ENCARGADOS
+        List<Encargado> encargados = controlador.obtenerEncargados();
+        for (int i = 0; i < encargados.size(); i++) {
+            controlador.eliminarEncargado(encargados.get(i).getId());
+        }
+
+    }
+
+    private void lecturaFicheros(String ruta) {
+        // LEER LOS FICHEROS Y GUARDARLOS NS COMO
+        // METER LOS DATOS DE LOS FICHEROS A LA BD
     }
 }

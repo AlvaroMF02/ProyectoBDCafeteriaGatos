@@ -157,12 +157,12 @@ public class Cafeteria implements Serializable {
     // TO STRING SIN CONCATENADAS
     @Override
     public String toString() {
-        return " [" + id + "]" + nombre;
+        return "[" + id + "]" + nombre;
     }
 
     // TO STRING PARA LA COPIA DE SEGURIDAD
     public String toStringCopiaSeguridad() {
-        return id + ";" + nombre + ";" + getFecApertLocalDate() + ";" + costePedidoMensu + ";" + idEncargado;
+        return id + ";" + nombre + ";" + getFecApertLocalDate() + ";" + costePedidoMensu + ";" + idEncargado.getId();
     }
 
 }

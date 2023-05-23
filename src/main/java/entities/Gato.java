@@ -125,12 +125,12 @@ public class Gato implements Serializable {
 
     @Override
     public String toString() {
-        return " [" + id + "]" + nombre;
+        return "[" + id + "]" + nombre;
     }
 
      // TO STRING PARA LA COPIA DE SEGURIDAD
     public String toStringCopiaSeguridad() {
-        return id + ";" + nombre + ";" + raza + ";" + edad + ";" + idCafeteria;
+        return id + ";" + nombre + ";" + raza + ";" + edad + ";" + idCafeteria.getId();
     }
     
 }

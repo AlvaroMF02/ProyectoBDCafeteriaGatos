@@ -90,7 +90,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        CopiaSeguridad.setBackground(new java.awt.Color(160, 126, 120));
+        CopiaSeguridad.setBackground(new java.awt.Color(138, 87, 78));
         CopiaSeguridad.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         CopiaSeguridad.setForeground(new java.awt.Color(41, 30, 28));
         CopiaSeguridad.setText("Copia de Seguridad");
@@ -101,7 +101,11 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        resturarCopias.setBackground(new java.awt.Color(138, 87, 78));
+        resturarCopias.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        resturarCopias.setForeground(new java.awt.Color(41, 30, 28));
         resturarCopias.setText("Restaurar copias");
+        resturarCopias.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         resturarCopias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resturarCopiasActionPerformed(evt);
@@ -118,9 +122,6 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(71, 71, 71)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(228, 228, 228)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(195, 195, 195)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Cafeterias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -128,8 +129,11 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(Encargados, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
                             .addComponent(CopiaSeguridad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(234, 234, 234)
-                        .addComponent(resturarCopias)))
+                        .addGap(233, 233, 233)
+                        .addComponent(resturarCopias, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(229, 229, 229)
+                        .addComponent(jLabel3)))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -137,19 +141,19 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel2)
-                .addGap(31, 31, 31)
+                .addGap(37, 37, 37)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Cafeterias, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Encargados, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Gatos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(CopiaSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(resturarCopias)
-                .addGap(25, 25, 25))
+                .addComponent(resturarCopias, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
