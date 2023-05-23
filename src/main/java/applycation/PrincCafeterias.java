@@ -275,8 +275,8 @@ public class PrincCafeterias extends javax.swing.JFrame {
 
     private void EliminarCafeteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarCafeteriaActionPerformed
         Integer id;
-        List<Gato>listaVacia= new ArrayList<>();
-        
+        List<Gato> gatos = controlador.obtenerGatos();
+
         // SE TIENE QUE MIRAR QUE SE HAYA SELECCIONADO UNA FILA Y QUE NO ESTE VACIA
         if (tablaCafeterias.getRowCount() > 0) {
             // SI ESTA SELECCIONADO
@@ -288,11 +288,21 @@ public class PrincCafeterias extends javax.swing.JFrame {
                 try {
                     // QUITAR TODOS LOS GATOS DE LA CAFETERIA
                     Cafeteria cafe = controlador.cafetPorId(id);
-                    
-                    
+
                     // EDITAR LOS GATOS PARA QUE NO ESTÉN EN ESA CAFETERIA
-                    
-                    
+                    // SI SALE BIEN DARLE LA VUELTA
+                    for (int i = 0; i < gatos.size(); i++) {
+                        for (int j = 0; j < cafe.getGatoList().size(); j++) {
+                            if (gatos.get(i).equals(cafe.getGatoList().get(j))) {
+
+                                gatos.get(i).setIdCafeteria(null);
+                                controlador.editarGato(gatos.get(i));
+
+                            }
+                        }
+
+                    }
+
                     controlador.eliminarCafeteria(cafe.getId());
                 } catch (NonexistentEntityException ex) {
                 } catch (IllegalOrphanException ex) {
