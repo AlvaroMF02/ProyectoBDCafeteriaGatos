@@ -151,6 +151,11 @@ public class RestaurarCopia extends javax.swing.JFrame {
                 // FILA x SELECCIONADA COLUMNA 0
                 copia = String.valueOf(tablaRest.getValueAt(tablaRest.getSelectedRow(), 0));
 
+                // BORRAR TODAS LAS TABLAS 
+                // LEER LOS FICHEROS Y GUARDARLOS NS COMO
+                // METER LOS DATOS DE LOS FICHEROS A LA BD
+                
+                
             } else {
                 JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
             }
