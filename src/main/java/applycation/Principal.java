@@ -129,11 +129,11 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(Encargados, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
                             .addComponent(CopiaSeguridad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(233, 233, 233)
-                        .addComponent(resturarCopias, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(229, 229, 229)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addComponent(resturarCopias)))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -247,7 +247,12 @@ public class Principal extends javax.swing.JFrame {
         List<String> lista = new ArrayList<>();
 
         for (int i = 0; i < listaCaf.size(); i++) {
-            lista.add(listaCaf.get(i).toStringCopiaSeguridad());
+            try {
+                lista.add(listaCaf.get(i).toStringCopiaSeguridad());
+            } catch (NullPointerException e) {
+                lista.add(listaCaf.get(i).toStringCopiaSeguridadConNull());
+            }
+            
         }
 
         try {
@@ -264,7 +269,11 @@ public class Principal extends javax.swing.JFrame {
         List<String> lista = new ArrayList<>();
 
         for (int i = 0; i < listaEnc.size(); i++) {
-            lista.add(listaEnc.get(i).toStringCopiaSeguridad());
+            try {
+                lista.add(listaEnc.get(i).toStringCopiaSeguridad());
+            } catch (NullPointerException e) {
+            }
+            
         }
 
         try {
@@ -281,7 +290,12 @@ public class Principal extends javax.swing.JFrame {
         List<String> lista = new ArrayList<>();
 
         for (int i = 0; i < listaGat.size(); i++) {
-            lista.add(listaGat.get(i).toStringCopiaSeguridad());
+            try {
+                lista.add(listaGat.get(i).toStringCopiaSeguridad());
+            } catch (NullPointerException e) {
+                lista.add(listaGat.get(i).toStringCopiaSeguridadConNull());
+            }
+            
         }
 
         try {
