@@ -130,7 +130,7 @@ public class Gato implements Serializable {
 
      // TO STRING PARA LA COPIA DE SEGURIDAD
     public String toStringCopiaSeguridad() {
-        return id + ";" + nombre + ";" + raza + ";" + edad + ";" + idCafeteria.getId();
+        return id + ";" + nombre + ";" + raza + ";" + edad + ";" + idCafeteria.getNombre();
     }
 
     public String toStringCopiaSeguridadConNull() {

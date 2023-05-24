@@ -56,7 +56,7 @@ public class Controlador {
         for (int i = 0; i < lista.size(); i++) {
             contEncargado.destroy(lista.get(i).getId());
         }
-
+        
     }
 
     // # # #  # # # # # # # # METODOS GATOS # # # # # # # # # # # //

@@ -162,7 +162,7 @@ public class Cafeteria implements Serializable {
 
     // TO STRING PARA LA COPIA DE SEGURIDAD
     public String toStringCopiaSeguridad() {
-        return id + ";" + nombre + ";" + getFecApertLocalDate() + ";" + costePedidoMensu + ";" + idEncargado.getId();
+        return id + ";" + nombre + ";" + getFecApertLocalDate() + ";" + costePedidoMensu + ";" + idEncargado.getNombre();
     }
 
     public String toStringCopiaSeguridadConNull() {

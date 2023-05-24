@@ -1,6 +1,8 @@
 package applycation;
 
+import controllers.CafeteriaJpaController;
 import controllers.Controlador;
+import controllers.EncargadoJpaController;
 import controllers.exceptions.IllegalOrphanException;
 import controllers.exceptions.NonexistentEntityException;
 import entities.Cafeteria;
@@ -16,6 +18,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.NoResultException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -320,7 +323,6 @@ public class RestaurarCopia extends javax.swing.JFrame {
 
                 tokens = linea.split(";");
 
-                // LOS LEE CORRECTAMENTE
                 // ASIGNAR LOS DATOS DEL ARRAY A UN ENCARGADO
                 cafe.setId(Integer.valueOf(tokens[0]));
                 cafe.setNombre(tokens[1]);
@@ -330,16 +332,13 @@ public class RestaurarCopia extends javax.swing.JFrame {
 
                 cafe.setCostePedidoMensu(BigDecimal.valueOf(Double.parseDouble(tokens[3])));
 
-                // CONTROLAR NULL
+                // LOS ENCARGADOS NO SE ASIGNARÁN POR SU ID SI NO POR SU NOMBRE 
+                EncargadoJpaController cont = new EncargadoJpaController();
                 try {
-                    if (!tokens[4].equalsIgnoreCase("null")) {
-                        Encargado encargado = controlador.encargPorId(Integer.valueOf(tokens[4]));
-                        cafe.setIdEncargado(encargado);
-                    }else{
-                        cafe.setIdEncargado(null);
-                    }
-                    
-                } catch (NullPointerException | NumberFormatException e) {
+                    Encargado encargado = cont.buscEncargadoPorNombre(tokens[4]);
+                    cafe.setIdEncargado(encargado);
+
+                } catch (NoResultException e) {
                 }
 
                 // METER AL ENCARGADO EN LA BD
@@ -368,12 +367,12 @@ public class RestaurarCopia extends javax.swing.JFrame {
                 gato.setRaza(tokens[2]);
                 gato.setEdad(Integer.parseInt(tokens[3]));
 
-                // CONTROLAR NULL
+                // ASIGNAMOS LA CAFETERIA POR SU NOMBRE
+                CafeteriaJpaController cont = new CafeteriaJpaController();
                 try {
-                    Cafeteria cafe = controlador.cafetPorId(Integer.valueOf(tokens[4]));
+                    Cafeteria cafe = cont.buscCafetPorNombre(tokens[4]);
                     gato.setIdCafeteria(cafe);
                 } catch (NullPointerException | NumberFormatException e) {
-                    gato.setIdCafeteria(null);
                 }
 
                 // METER AL ENCARGADO EN LA BD
