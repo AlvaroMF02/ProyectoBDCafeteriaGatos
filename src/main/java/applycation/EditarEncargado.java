@@ -23,11 +23,7 @@ public class EditarEncargado extends javax.swing.JFrame {
 
         Encargado encarg = new Encargado();
 
-        try {
-            encarg = controlador.encargPorId(id);
-        } catch (IllegalArgumentException e) {
-            JOptionPane.showMessageDialog(null, "Los datos no se han podido cargar");
-        }
+        encarg = controlador.encargPorId(codigo);
 
         // PASAR LOS ATRIBUTOS A TEXTO PARA LA EDICION
         editNombre.setText(encarg.getNombre());
