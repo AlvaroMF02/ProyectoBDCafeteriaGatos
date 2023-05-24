@@ -8,6 +8,9 @@ import entities.Encargado;
 import entities.Gato;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -161,17 +164,22 @@ public class RestaurarCopia extends javax.swing.JFrame {
                 copia = String.valueOf(tablaRest.getValueAt(tablaRest.getSelectedRow(), 0));
 
                 // BORRADO DE LAS TABLAS
-//                try {
-//                    borrado();
-//                } catch (IllegalOrphanException ex) {
-//                    Logger.getLogger(RestaurarCopia.class.getName()).log(Level.SEVERE, null, ex);
-//                } catch (NonexistentEntityException ex) {
-//                    Logger.getLogger(RestaurarCopia.class.getName()).log(Level.SEVERE, null, ex);
-//                } catch (Exception ex) {
-//                    Logger.getLogger(RestaurarCopia.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-                
-                lecturaEInsercion(copia);
+                try {
+                    borrado();
+                } catch (IllegalOrphanException ex) {
+                    Logger.getLogger(RestaurarCopia.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NonexistentEntityException ex) {
+                    Logger.getLogger(RestaurarCopia.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(RestaurarCopia.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                // INSERTAR TODOS LOS DATOS DE LA COPIA DE SEGURIDAD
+                try {
+                    lecturaEInsercion(copia);
+                } catch (ParseException | IllegalOrphanException ex) {
+                    Logger.getLogger(RestaurarCopia.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             } else {
                 JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
@@ -180,7 +188,7 @@ public class RestaurarCopia extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No ha seleccionado nada");
         }
 
-
+        this.dispose();
     }//GEN-LAST:event_RestaurarActionPerformed
 
     private void voolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voolverActionPerformed
@@ -271,30 +279,110 @@ public class RestaurarCopia extends javax.swing.JFrame {
 
     }
 
-    private void lecturaEInsercion(String ruta) {
+    private void lecturaEInsercion(String ruta) throws ParseException, IllegalOrphanException {
         // LEER LOS FICHEROS Y HACER LAS INSERCIONES
-        // ENCARGADOS
         String linea = "";
         String[] tokens;
-        try (Scanner datosFichero = new Scanner(new File("copias/"+ruta+"/Encargados"), "ISO_8859_1")) {
+
+        // ENCARGADOS
+        try ( Scanner datosFichero = new Scanner(new File("copias/" + ruta + "/Encargados.csv"), "ISO_8859_1")) {
 
             while (datosFichero.hasNextLine()) {
-                
+
+                Encargado encargado = new Encargado();
+
                 linea = datosFichero.nextLine();
-                
+
                 tokens = linea.split(";");
-                
-                for (String string : tokens) {
-                    System.out.print(string + "\t");
-                }
-                System.out.println();
+
+                // LOS LEE CORRECTAMENTE
+                // ASIGNAR LOS DATOS DEL ARRAY A UN ENCARGADO
+                encargado.setId(Integer.valueOf(tokens[0]));
+                encargado.setNombre(tokens[1]);
+                encargado.setApellidos(tokens[2]);
+                encargado.setEdad(Integer.parseInt(tokens[3]));
+
+                // METER AL ENCARGADO EN LA BD
+                controlador.crearEncargado(encargado);
+
             }
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
         // CAFETERIAS
-        
+        try ( Scanner datosFichero = new Scanner(new File("copias/" + ruta + "/Cafeterias.csv"), "ISO_8859_1")) {
+
+            while (datosFichero.hasNextLine()) {
+
+                Cafeteria cafe = new Cafeteria();
+
+                linea = datosFichero.nextLine();
+
+                tokens = linea.split(";");
+
+                // LOS LEE CORRECTAMENTE
+                // ASIGNAR LOS DATOS DEL ARRAY A UN ENCARGADO
+                cafe.setId(Integer.valueOf(tokens[0]));
+                cafe.setNombre(tokens[1]);
+                // METER LA FECHA
+                SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                cafe.setFecApert(formato.parse(tokens[2]));
+
+                cafe.setCostePedidoMensu(BigDecimal.valueOf(Double.parseDouble(tokens[3])));
+
+                // CONTROLAR NULL
+                try {
+                    if (!tokens[4].equalsIgnoreCase("null")) {
+                        Encargado encargado = controlador.encargPorId(Integer.valueOf(tokens[4]));
+                        cafe.setIdEncargado(encargado);
+                    }else{
+                        cafe.setIdEncargado(null);
+                    }
+                    
+                } catch (NullPointerException | NumberFormatException e) {
+                }
+
+                // METER AL ENCARGADO EN LA BD
+                controlador.crearCafeteria(cafe);
+
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
         // GATOS
-        
+        try ( Scanner datosFichero = new Scanner(new File("copias/" + ruta + "/Gatos.csv"), "ISO_8859_1")) {
+
+            while (datosFichero.hasNextLine()) {
+
+                Gato gato = new Gato();
+
+                linea = datosFichero.nextLine();
+
+                tokens = linea.split(";");
+
+                // LOS LEE CORRECTAMENTE
+                // ASIGNAR LOS DATOS DEL ARRAY A UN ENCARGADO
+                gato.setId(Integer.valueOf(tokens[0]));
+                gato.setNombre(tokens[1]);
+                gato.setRaza(tokens[2]);
+                gato.setEdad(Integer.parseInt(tokens[3]));
+
+                // CONTROLAR NULL
+                try {
+                    Cafeteria cafe = controlador.cafetPorId(Integer.valueOf(tokens[4]));
+                    gato.setIdCafeteria(cafe);
+                } catch (NullPointerException | NumberFormatException e) {
+                    gato.setIdCafeteria(null);
+                }
+
+                // METER AL ENCARGADO EN LA BD
+                controlador.crearGato(gato);
+
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
