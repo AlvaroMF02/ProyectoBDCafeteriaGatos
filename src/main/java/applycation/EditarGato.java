@@ -188,7 +188,6 @@ public class EditarGato extends javax.swing.JFrame {
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
         Gato gatEdit = controlador.gatoPorId(id);
-        List<Cafeteria> cafes = controlador.obtenerCafeterias();
         Cafeteria caf = new Cafeteria();
 
         // PARSEO Y ASIGNACIÓN
@@ -196,7 +195,7 @@ public class EditarGato extends javax.swing.JFrame {
         gatEdit.setNombre(editNombre.getText());
         gatEdit.setRaza(editRaza.getText());
 
-        // CATCH PARA EL BIG DECIMAL
+        // CATCH PARA EL BIG DECIMAL Y QUE NO META NULOS
         try {
             gatEdit.setEdad(Integer.parseInt(editEdad.getText()));
 

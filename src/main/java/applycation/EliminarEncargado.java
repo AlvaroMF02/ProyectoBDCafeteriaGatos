@@ -50,12 +50,14 @@ public class EliminarEncargado extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(160, 126, 120));
         jLabel2.setText("ELIMINAR ENCARGADO");
 
-        jLabel1.setBackground(new java.awt.Color(187, 187, 187));
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("¿Seguro qué deséa eliminar a este encargado?");
 
-        jLabel3.setBackground(new java.awt.Color(187, 187, 187));
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText(" Actualmente está trabajando en una cafeteria");
 
         no.setBackground(new java.awt.Color(160, 126, 120));
@@ -160,6 +162,8 @@ public class EliminarEncargado extends javax.swing.JFrame {
             }
 
         }
+        
+        this.dispose();
 
     }//GEN-LAST:event_siActionPerformed
 

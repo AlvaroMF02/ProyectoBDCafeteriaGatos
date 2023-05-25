@@ -21,9 +21,7 @@ public class EditarEncargado extends javax.swing.JFrame {
     public EditarEncargado(Integer codigo) {
         initComponents();
 
-        Encargado encarg = new Encargado();
-
-        encarg = controlador.encargPorId(codigo);
+        Encargado encarg = controlador.encargPorId(codigo);
 
         // PASAR LOS ATRIBUTOS A TEXTO PARA LA EDICION
         editNombre.setText(encarg.getNombre());
@@ -178,7 +176,6 @@ public class EditarEncargado extends javax.swing.JFrame {
                 // EDITAR LA FACTURA
                 controlador.editarEncargado(encargEdit);
             } catch (Exception ex) {
-                //JPANEL NO SE HA PODIDO EDITAR
                 JOptionPane.showMessageDialog(null, "No se ha podido editar");
 
             }
