@@ -372,7 +372,7 @@ public class RestaurarCopia extends javax.swing.JFrame {
                 try {
                     Cafeteria cafe = cont.buscCafetPorNombre(tokens[4]);
                     gato.setIdCafeteria(cafe);
-                } catch (NullPointerException | NumberFormatException e) {
+                } catch (NullPointerException | NumberFormatException | NoResultException e) {
                 }
 
                 // METER AL ENCARGADO EN LA BD
