@@ -44,6 +44,7 @@ public class Gato implements Serializable {
     private int edad;
     
     // RELACION GATO MUCHOS A UNO CAFETERIA
+    // UN GATO SOLO PODRÁ ESTAR EN UNA CAFETERIA
     @JoinColumn(name = "idCafeteria", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Cafeteria idCafeteria;
@@ -133,6 +134,7 @@ public class Gato implements Serializable {
         return id + ";" + nombre + ";" + raza + ";" + edad + ";" + idCafeteria.getNombre();
     }
 
+    // PARA CUANDO UN GATO NO ESTÁ EN CAFETERIA
     public String toStringCopiaSeguridadConNull() {
         return id + ";" + nombre + ";" + raza + ";" + edad + ";" + null;
     }

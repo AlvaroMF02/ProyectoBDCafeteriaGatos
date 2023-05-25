@@ -44,6 +44,7 @@ public class Encargado implements Serializable {
     private int edad;
     
     // RELACION ENCARGADO UNO A UNO CAFETERIA
+    // UN ENCARGADO TRABAJARÁ EN UNA SOLA CAFETERIA
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "idEncargado")
     private Cafeteria cafeteria;
 

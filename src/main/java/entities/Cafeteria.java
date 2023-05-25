@@ -54,11 +54,13 @@ public class Cafeteria implements Serializable {
     @Column(name = "costePedidoMensu")
 
     // RELACION CAFETERIA UNO A MUCHOS GATO
+    // UNA CAFETERIA PUEDE TENER MUCHOS GATOS
     private BigDecimal costePedidoMensu;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCafeteria")
     private List<Gato> gatoList;
 
     // RELACION CAFETERIA UNO A UNO ENCARGADO
+    // CADA CAFETERIA CONTARA CON UN SOLO ENCARGADO
     @JoinColumn(name = "idEncargado", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Encargado idEncargado;
@@ -165,6 +167,7 @@ public class Cafeteria implements Serializable {
         return id + ";" + nombre + ";" + getFecApertLocalDate() + ";" + costePedidoMensu + ";" + idEncargado.getNombre();
     }
 
+    // PARA CUANDO UNA CAFETERIA NO TIENE UN ENCARGADO
     public String toStringCopiaSeguridadConNull() {
         return id + ";" + nombre + ";" + getFecApertLocalDate() + ";" + costePedidoMensu + ";" + null;
     }
