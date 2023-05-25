@@ -167,7 +167,7 @@ public class InsertarGato extends javax.swing.JFrame {
 
         List<Cafeteria> cafeterias = controlador.obtenerCafeterias();
         Gato gatoInser = new Gato();
-        Integer idCafeteria = 999999;   // PARA QUE SALTE EL ERROR SI NO SE HA ESCRITO NADA
+        Integer idCafeteria;
 
         // PARSEO Y ASIGNACIÓN
         try {
@@ -176,21 +176,21 @@ public class InsertarGato extends javax.swing.JFrame {
             gatoInser.setRaza(inserRaza.getText());
             gatoInser.setEdad(Integer.parseInt(inserEdad.getText()));
             idCafeteria = Integer.valueOf(inserCafeteria.getText());
+
+            // SI EL ID DE LA CAFETERIA NO ESTA EN EL RANGO NO CREA AL GATO
+            if (idCafeteria < 1 || idCafeteria > cafeterias.size()) {
+                JOptionPane.showMessageDialog(null, "Esa cafeteria no existe");
+            } else {
+                Cafeteria cafeteria = controlador.cafetPorId(idCafeteria);
+                gatoInser.setIdCafeteria(cafeteria);
+
+                // DA EL MISMO ERROR QUE AL AÑADIR UNA CAFETERIA
+                controlador.crearGato(gatoInser);
+
+                this.dispose();
+            }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Escriba bien los valores");
-        }
-
-        // SI EL ID DE LA CAFETERIA NO ESTA EN EL RANGO NO CREA AL GATO
-        if (idCafeteria < 1 || idCafeteria > cafeterias.size()) {
-            JOptionPane.showMessageDialog(null, "Esa cafeteria no existe");
-        } else {
-            Cafeteria cafeteria = controlador.cafetPorId(idCafeteria);
-            gatoInser.setIdCafeteria(cafeteria);
-
-            // DA EL MISMO ERROR QUE AL AÑADIR UNA CAFETERIA
-            controlador.crearGato(gatoInser);
-
-            this.dispose();
+            JOptionPane.showMessageDialog(null, "Valores nulos");
         }
 
         this.dispose();

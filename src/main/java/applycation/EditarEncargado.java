@@ -172,18 +172,18 @@ public class EditarEncargado extends javax.swing.JFrame {
             encargEdit.setNombre(editNombre.getText());
             encargEdit.setApellidos(editApellidos.getText());
             encargEdit.setEdad(Integer.parseInt(editEdad.getText()));
+
+            // NO EDITA A LOS QUE ESTÁN ASIGNADOS A UNA CAFETERIA
+            try {
+                // EDITAR LA FACTURA
+                controlador.editarEncargado(encargEdit);
+            } catch (Exception ex) {
+                //JPANEL NO SE HA PODIDO EDITAR
+                JOptionPane.showMessageDialog(null, "No se ha podido editar");
+
+            }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Solo se admiten números en la edad");
-        }
-
-        // NO EDITA A LOS QUE ESTÁN ASIGNADOS A UNA CAFETERIA
-        try {
-            // EDITAR LA FACTURA
-            controlador.editarEncargado(encargEdit);
-        } catch (Exception ex) {
-            //JPANEL NO SE HA PODIDO EDITAR
-            JOptionPane.showMessageDialog(null, "No se ha podido editar");
-
         }
 
         // "CIERRA" LA VENTANA

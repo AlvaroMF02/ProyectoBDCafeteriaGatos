@@ -196,19 +196,19 @@ public class EditarCafeteria extends javax.swing.JFrame {
         cafe.setId(id);
 
         cafe.setNombre(editNombre.getText());
-        cafe.setCostePedidoMensu(BigDecimal.valueOf(Double.parseDouble(editCosteMens.getText())));
+        
 
         // PARSEAR LA FECHA PARA DATE
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         try {
             cafe.setFecApert(formato.parse(editFecha.getText()));
         } catch (ParseException ex) {
-            //JPANEL NO SE HA ESCRITO BIEN LA FECHA
             JOptionPane.showMessageDialog(null, "No se ha introducido bien la fecha");
         }
 
         // PONER ENCARGADO AL EDITAR
         try {
+            cafe.setCostePedidoMensu(BigDecimal.valueOf(Double.parseDouble(editCosteMens.getText())));
             cafe.setIdEncargado(controlador.encargPorId(Integer.valueOf(editEncargado.getText())));
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error al cargar al encargado");
@@ -219,10 +219,9 @@ public class EditarCafeteria extends javax.swing.JFrame {
             // EDITAR LA FACTURA
             controlador.editarCafeteria(cafe);
         } catch (Exception ex) {
-            //JPANEL NO SE HA PODIDO EDITAR
             JOptionPane.showMessageDialog(null, "Ese trabajador está en otra cafeteria");
         }
-
+        
         // "CIERRA" LA VENTANA
         this.dispose();
 

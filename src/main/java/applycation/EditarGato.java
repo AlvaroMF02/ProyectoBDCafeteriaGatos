@@ -3,6 +3,7 @@ package applycation;
 import controllers.Controlador;
 import entities.Cafeteria;
 import entities.Gato;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -187,6 +188,7 @@ public class EditarGato extends javax.swing.JFrame {
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
         Gato gatEdit = controlador.gatoPorId(id);
+        List<Cafeteria> cafes = controlador.obtenerCafeterias();
         Cafeteria caf = new Cafeteria();
 
         // PARSEO Y ASIGNACIÓN
@@ -197,28 +199,30 @@ public class EditarGato extends javax.swing.JFrame {
         // CATCH PARA EL BIG DECIMAL
         try {
             gatEdit.setEdad(Integer.parseInt(editEdad.getText()));
+
+            // CATCH PARA QUE NO PONGA CAFETERIAS QUE NO EXISTEN
+            // FALTA AVISAR POR JOPTION
+            try {
+                caf = controlador.cafetPorId(Integer.valueOf(editCafeteria.getText()));
+                gatEdit.setIdCafeteria(caf);
+
+            } catch (NullPointerException | NumberFormatException e) {
+                if (caf.getId() == null) {
+                    JOptionPane.showMessageDialog(null, "La cafeteria no existe");
+                }
+
+            }
+
+            if (gatEdit.getId() != null) {
+                try {
+                    // DA EL MISMO ERROR QUE AL AÑADIR UNA CAFETERIA
+                    controlador.editarGato(gatEdit);
+                } catch (Exception ex) {
+                }
+            }
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Valores mal introducidos");
-        }
-
-        // CATCH PARA QUE NO PONGA CAFETERIAS QUE NO EXISTEN
-        // FALTA AVISAR POR JOPTION
-        try {
-            caf = controlador.cafetPorId(Integer.valueOf(editCafeteria.getText()));
-            gatEdit.setIdCafeteria(caf);
-        } catch (NullPointerException | NumberFormatException e) {
-            if (caf.getId() == null) {
-                JOptionPane.showMessageDialog(null, "La cafeteria no existe");
-            }
-
-        }
-
-        if (gatEdit.getId() != null) {
-            try {
-                // DA EL MISMO ERROR QUE AL AÑADIR UNA CAFETERIA
-                controlador.editarGato(gatEdit);
-            } catch (Exception ex) {
-            }
         }
 
         this.dispose();

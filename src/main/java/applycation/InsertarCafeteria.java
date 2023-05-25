@@ -187,31 +187,29 @@ public class InsertarCafeteria extends javax.swing.JFrame {
             idEncarfado = Integer.valueOf(inserEncargado.getText());
             cafeteriaInser.setNombre(inserNombre.getText());
             cafeteriaInser.setCostePedidoMensu(BigDecimal.valueOf(Double.parseDouble(inserCostes.getText())));
+
+            cafeteriaInser.setGatoList(listaVacia);
+
+            // PARSEAR LA FECHA PARA DATE
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); // CAMBIO DE / A -
+            try {
+                cafeteriaInser.setFecApert(formato.parse(inserFech.getText()));
+            } catch (ParseException ex) {
+                JOptionPane.showMessageDialog(null, "No se ha introducido bien la fecha");
+            }
+
+            EncargadoJpaController controlEnca = new EncargadoJpaController();
+            Encargado encargado = controlEnca.findEncargado(idEncarfado);
+            cafeteriaInser.setIdEncargado(encargado);
+
+            // VER SI EL ENCARGADO ESTÁ EN UNA CAFETERIA
+            try {
+                controlador.crearCafeteria(cafeteriaInser);
+            } catch (IllegalOrphanException ex) {
+                JOptionPane.showMessageDialog(null, "El encargado ya está en una cafetería");
+            }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Se ha introducido un valor nulo");
-        }
-
-        cafeteriaInser.setGatoList(listaVacia);
-
-        // PARSEAR LA FECHA PARA DATE
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); // CAMBIO DE / A -
-        try {
-            cafeteriaInser.setFecApert(formato.parse(inserFech.getText()));
-        } catch (ParseException ex) {
-            //JPANEL NO SE HA ESCRITO BIEN LA FECHA
-            JOptionPane.showMessageDialog(null, "No se ha introducido bien la fecha");
-        }
-
-        EncargadoJpaController controlEnca = new EncargadoJpaController();
-        Encargado encargado = controlEnca.findEncargado(idEncarfado);
-//        Encargado encargado = controlador.encargPorId(idEncarfado);
-        cafeteriaInser.setIdEncargado(encargado);
-
-        // ERROR, EL ENCARGADO NO PUEDE EXISTIR O EL ENCARGADO YA ESTA EN OTRA CAFETERIA
-        try {
-            controlador.crearCafeteria(cafeteriaInser);
-        } catch (IllegalOrphanException ex) {
-            JOptionPane.showMessageDialog(null, "El encargado ya está en una cafetería");
         }
 
         // "CIERRA" LA VENTANA

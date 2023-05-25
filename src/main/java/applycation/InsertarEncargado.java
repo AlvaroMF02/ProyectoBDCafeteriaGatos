@@ -2,6 +2,7 @@ package applycation;
 
 import controllers.Controlador;
 import entities.Encargado;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -148,18 +149,22 @@ public class InsertarEncargado extends javax.swing.JFrame {
         Encargado encarInser = new Encargado();
 
         // PARSEO Y ASIGNACIÓN
-        encarInser.setId(0);// DA IGUAL PQ ES AUTOINCREMENT
-        encarInser.setNombre(inserNombre.getText());
-        encarInser.setApellidos(inserApellidos.getText());
-        encarInser.setEdad(Integer.parseInt(inserEdad.getText()));
+        try {
+            encarInser.setId(0);// DA IGUAL PQ ES AUTOINCREMENT
+            encarInser.setNombre(inserNombre.getText());
+            encarInser.setApellidos(inserApellidos.getText());
+            encarInser.setEdad(Integer.parseInt(inserEdad.getText()));
+            controlador.crearEncargado(encarInser);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Valores mal introducidos");
+        }
+        
 
-        controlador.crearEncargado(encarInser);
+        
 
         // "CIERRA" LA VENTANA
         this.dispose();
 
-        // ACTUALIZA LA TABLA
-        //PrincEncargado.cargarTabla();
 
     }//GEN-LAST:event_AnyadirActionPerformed
 
